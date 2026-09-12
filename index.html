@@ -320,9 +320,9 @@
   @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 
   /* ---------- aims bento ---------- */
-  .bento{margin-top:3.2rem;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(208px,1fr);gap:14px}
+  .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);
-    padding:1.8rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:208px;
+    padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
     transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
   .bento .tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -22px rgba(11,30,48,.5)}
   .tile .n{font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
@@ -330,11 +330,11 @@
   .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
     font-size:1.35rem;margin-top:.55rem;line-height:1.08}
   .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:.86;max-width:46ch}
-  .tile.big{grid-column:span 2;grid-row:span 2;padding:2.3rem}
+  .tile.big{grid-column:span 2;aspect-ratio:3/2;padding:2.3rem}
   .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
   .tile.big p{font-size:1.06rem}
-  .tile.wide{grid-column:span 2}
-  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;background-position:center;border-color:transparent}
+  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;
+    background-position:center;background-color:var(--harbour-deep);border-color:transparent}
   .tile.photo::before{content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
   .tile.photo>*{position:relative;z-index:1}
@@ -344,15 +344,9 @@
   .tile.light{background:var(--surface-card);color:var(--text-body)}
   .tile.light .n{color:var(--label)}
   .tile.light h3{color:var(--text-strong)}
-  @media(max-width:900px){
-    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(190px,auto)}
-    .tile.big{grid-column:span 2;grid-row:auto}
-    .tile.wide{grid-column:span 2}
-  }
   @media(max-width:560px){
     .bento{grid-template-columns:1fr}
-    .tile.big,.tile.wide{grid-column:auto;grid-row:auto}
-    .tile{min-height:172px}
+    .tile.big{grid-column:auto}
   }
 
   /* ---------- responsive pass ---------- */
@@ -471,7 +465,7 @@
           <h3>Raise the region&rsquo;s profile</h3>
           <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
         </article>
-        <article class="tile photo wide" style="--img:url('assets/aim5.jpg')">
+        <article class="tile photo" style="--img:url('assets/aim5.jpg')">
           <h3>Build a route in</h3>
           <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and the people already doing it.</p>
         </article>
