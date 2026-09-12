@@ -319,6 +319,42 @@
   @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:2rem}}
   @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 
+  /* ---------- aims bento ---------- */
+  .bento{margin-top:3.2rem;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(208px,1fr);gap:14px}
+  .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);
+    padding:1.8rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:208px;
+    transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .bento .tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -22px rgba(11,30,48,.5)}
+  .tile .n{font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    font-variant-numeric:tabular-nums;color:var(--label)}
+  .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
+    font-size:1.35rem;margin-top:.55rem;line-height:1.08}
+  .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:.86;max-width:46ch}
+  .tile.big{grid-column:span 2;grid-row:span 2;padding:2.3rem}
+  .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
+  .tile.big p{font-size:1.06rem}
+  .tile.wide{grid-column:span 2}
+  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;background-position:center;border-color:transparent}
+  .tile.photo::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
+  .tile.photo>*{position:relative;z-index:1}
+  .tile.photo .n{color:var(--sky)}
+  .tile.dark{background:var(--harbour);color:#fff;border-color:transparent}
+  .tile.dark .n{color:var(--sky)}
+  .tile.light{background:var(--surface-card);color:var(--text-body)}
+  .tile.light .n{color:var(--label)}
+  .tile.light h3{color:var(--text-strong)}
+  @media(max-width:900px){
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(190px,auto)}
+    .tile.big{grid-column:span 2;grid-row:auto}
+    .tile.wide{grid-column:span 2}
+  }
+  @media(max-width:560px){
+    .bento{grid-template-columns:1fr}
+    .tile.big,.tile.wide{grid-column:auto;grid-row:auto}
+    .tile{min-height:172px}
+  }
+
   /* ---------- responsive pass ---------- */
   .brand span{white-space:nowrap}
   /* stacked aim panels: darker vertical scrim so text reads over the photo */
@@ -418,57 +454,32 @@
         <span class="eyebrow">Our five aims</span>
         <h2>What we&rsquo;re actually here to do.</h2>
       </div>
-      <div class="acc r" id="acc" role="tablist" aria-label="Our five aims">
-        <div class="panel active" tabindex="0" role="tab" aria-selected="true" style="--img:url('assets/aim1.jpg')">
-          <div class="num">01 / 05</div>
-          <div class="vlabel"><span>Connect the region</span></div>
-          <div class="body">
-            <div class="eb">Aim 01</div>
-            <h3>Connect the region properly</h3>
-            <div class="rule"></div>
-            <p>Studios, broadcasters, agencies, universities and technology partners across the North know each other far less well than they should. Getting the right people in one room, regularly, is the first job.</p>
-          </div>
-        </div>
-        <div class="panel" tabindex="0" role="tab" aria-selected="false" style="--img:url('assets/aim2.jpg')">
-          <div class="num">02 / 05</div>
-          <div class="vlabel"><span>Share what works</span></div>
-          <div class="body">
-            <div class="eb">Aim 02</div>
-            <h3>Share what&rsquo;s actually working</h3>
-            <div class="rule"></div>
-            <p>Real projects with real numbers, explained by the people who did the work, including the parts that went badly. Those tend to be the most useful.</p>
-          </div>
-        </div>
-        <div class="panel" tabindex="0" role="tab" aria-selected="false" style="--img:url('assets/aim3.jpg')">
-          <div class="num">03 / 05</div>
-          <div class="vlabel"><span>Open up opportunity</span></div>
-          <div class="body">
-            <div class="eb">Aim 03</div>
-            <h3>Open up opportunity</h3>
-            <div class="rule"></div>
-            <p>Circulating funding routes, joint bids, partnerships and commercial openings so they reach the whole community, not just the usual few.</p>
-          </div>
-        </div>
-        <div class="panel" tabindex="0" role="tab" aria-selected="false" style="--img:url('assets/aim4.jpg')">
-          <div class="num">04 / 05</div>
-          <div class="vlabel"><span>Raise the profile</span></div>
-          <div class="body">
-            <div class="eb">Aim 04</div>
-            <h3>Raise the region&rsquo;s profile</h3>
-            <div class="rule"></div>
-            <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
-          </div>
-        </div>
-        <div class="panel" tabindex="0" role="tab" aria-selected="false" style="--img:url('assets/aim5.jpg')">
-          <div class="num">05 / 05</div>
-          <div class="vlabel"><span>Build a route in</span></div>
-          <div class="body">
-            <div class="eb">Aim 05</div>
-            <h3>Build a route in</h3>
-            <div class="rule"></div>
-            <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and the people already doing it.</p>
-          </div>
-        </div>
+      <div class="bento r">
+        <article class="tile photo big" style="--img:url('assets/aim1.jpg')">
+          <div class="n">01 / 05</div>
+          <h3>Connect the region properly</h3>
+          <p>Studios, broadcasters, agencies, universities and technology partners across the North know each other far less well than they should. Getting the right people in one room, regularly, is the first job.</p>
+        </article>
+        <article class="tile dark">
+          <div class="n">02 / 05</div>
+          <h3>Share what&rsquo;s actually working</h3>
+          <p>Real projects with real numbers, explained by the people who did the work, including the parts that went badly. Those tend to be the most useful.</p>
+        </article>
+        <article class="tile photo" style="--img:url('assets/aim3.jpg')">
+          <div class="n">03 / 05</div>
+          <h3>Open up opportunity</h3>
+          <p>Circulating funding routes, joint bids, partnerships and commercial openings so they reach the whole community, not just the usual few.</p>
+        </article>
+        <article class="tile light">
+          <div class="n">04 / 05</div>
+          <h3>Raise the region&rsquo;s profile</h3>
+          <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
+        </article>
+        <article class="tile photo wide" style="--img:url('assets/aim5.jpg')">
+          <div class="n">05 / 05</div>
+          <h3>Build a route in</h3>
+          <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and the people already doing it.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -640,6 +651,7 @@
   /* accordion: one panel expanded at a time; reorder so active fills the wide track */
   (function(){
     var acc=document.getElementById('acc');
+    if(!acc)return;
     var panels=[].slice.call(acc.querySelectorAll('.panel'));
     var wide='minmax(0,1.9fr)';
     function layout(){
