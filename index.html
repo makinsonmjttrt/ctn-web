@@ -323,8 +323,9 @@
   .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);
     padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
-    transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
-  .bento .tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -22px rgba(11,30,48,.5)}
+    box-shadow:0 10px 26px -14px rgba(11,30,48,.55);
+    transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
+  .bento .tile:hover{transform:translateY(-8px);box-shadow:0 34px 60px -18px rgba(11,30,48,.7)}
   .tile .n{font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
     font-variant-numeric:tabular-nums;color:var(--label)}
   .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
