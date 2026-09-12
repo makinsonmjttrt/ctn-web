@@ -123,11 +123,11 @@
     transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
   }
   header.nav.solid{background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;height:74px}
-  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--white);
-    font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.05rem;transition:color .3s ease}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;height:80px}
+  .brand{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--white);
+    font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
   header.nav.solid .brand{color:var(--text-strong)}
-  .brand .mark{width:28px;height:28px;flex:none;display:block}
+  .brand .mark{width:36px;height:36px;flex:none;display:block}
   .nav-links{display:flex;align-items:center;gap:2.1rem}
   .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.78);transition:color .2s,opacity .2s}
   .nav-links a:hover{color:var(--white)}
@@ -138,7 +138,7 @@
   /* ---------- hero ---------- */
   .hero{
     background:var(--harbour-abyss);color:var(--white);position:relative;overflow:hidden;
-    margin-top:-74px;padding-top:74px;
+    margin-top:-80px;padding-top:80px;
   }
   .hero .field{position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
@@ -328,9 +328,9 @@
   /* phones: keep the nav on one line, tighten the frame, scale the hero */
   @media(max-width:560px){
     :root{--gutter:1rem}
-    .nav-in{height:62px;gap:.7rem}
-    .brand{font-size:.92rem}
-    .brand .mark{width:24px;height:24px}
+    .nav-in{height:68px;gap:.7rem}
+    .brand{font-size:1.05rem;gap:.6rem}
+    .brand .mark{width:29px;height:29px}
     .theme-toggle{display:none}
     .btn{padding:.68rem .95rem;font-size:.85rem;gap:.4rem}
     .hero h1{font-size:clamp(2.5rem,12vw,3.4rem)}
@@ -338,7 +338,7 @@
     .sec-head .say,.editorial .lead p,.join p{font-size:1.04rem}
   }
   /* very small phones: mark only, so the nav never overflows */
-  @media(max-width:360px){
+  @media(max-width:400px){
     .brand span{display:none}
     .btn{padding:.62rem .85rem}
   }
