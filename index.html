@@ -236,11 +236,12 @@
 
   @media(max-width:860px){
     .acc{grid-template-columns:1fr;min-height:0;gap:12px}
-    .panel{min-height:76px}
-    .panel .vlabel{position:static;padding:1.5rem 1.5rem 1.5rem 3.4rem;top:auto;bottom:auto;justify-content:flex-start;align-items:center}
-    .panel .vlabel span{writing-mode:horizontal-tb;transform:none;font-size:1.2rem}
+    .panel{min-height:0}
+    .panel .num{position:static;padding:1.3rem 1.5rem 0}
+    .panel .vlabel{position:static;padding:.5rem 1.5rem 1.4rem;top:auto;bottom:auto;justify-content:flex-start;align-items:center}
+    .panel .vlabel span{writing-mode:horizontal-tb;transform:none;font-size:1.25rem}
     .panel.active .vlabel{display:none}
-    .panel .body{padding:1.8rem 1.6rem}
+    .panel .body{padding:.4rem 1.6rem 1.8rem;height:auto}
   }
 
   /* ---------- audience grid ---------- */
