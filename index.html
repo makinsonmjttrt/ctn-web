@@ -132,11 +132,19 @@
     font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
   header.nav.solid .brand{color:var(--text-strong)}
   .brand .mark{width:48px;height:48px;flex:none;display:block}
-  /* MENU trigger (sovereignai pattern: wordmark + MENU) */
-  .menu-btn{display:inline-flex;align-items:center;gap:.6rem;background:transparent;border:0;cursor:pointer;
+  /* inline top nav (desktop) */
+  .nav-links{display:flex;align-items:center;gap:clamp(1.3rem,2.4vw,2.1rem)}
+  .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;
+    color:rgba(255,255,255,.82);transition:color .2s,opacity .2s}
+  .nav-links a:hover{color:var(--white)}
+  header.nav.solid .nav-links a{color:var(--ink);opacity:.82}
+  header.nav.solid .nav-links a:hover{opacity:1;color:var(--harbour)}
+  /* hamburger trigger (mobile only) */
+  .menu-btn{display:none;align-items:center;gap:.6rem;background:transparent;border:0;cursor:pointer;
     font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
     color:rgba(255,255,255,.82);padding:.4rem 0;transition:color .3s ease}
   header.nav.solid .menu-btn{color:var(--text-strong)}
+  @media(max-width:860px){.nav-links{display:none}.menu-btn{display:inline-flex}}
   .menu-btn:hover{color:var(--amber)}
   .menu-btn .bars{position:relative;width:22px;height:10px;flex:none}
   .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s ease}
@@ -181,39 +189,31 @@
   }
 
   /* ---------- hero ---------- */
-  .hero{background:var(--harbour-abyss);color:var(--white);position:relative;isolation:isolate;margin-top:-80px}
-  .hero-track{position:relative;height:320vh}
-  .hero-stage{position:sticky;top:0;height:100vh;overflow:hidden}
+  .hero{position:relative;isolation:isolate;overflow:hidden;
+    background:var(--harbour-abyss);color:var(--white);
+    min-height:100vh;display:flex;align-items:center;
+    margin-top:-80px;padding:calc(80px + clamp(2rem,5vw,4rem)) 0 clamp(3rem,7vw,6rem)}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
   .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(155deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%);mix-blend-mode:screen}
   .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(180deg,rgba(11,30,48,.34) 0%,rgba(11,30,48,.30) 46%,rgba(11,30,48,.84) 100%)}
-  .hero-stages{position:absolute;inset:0;z-index:3}
-  .stage{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding-top:80px;opacity:1}
-  .stage .wrap{width:100%}
-  .stage .eyebrow{margin-bottom:1.6rem}
-  .js .stage{opacity:0;transform:translateY(28px);pointer-events:none;
-    transition:opacity .9s cubic-bezier(.23,1,.32,1),transform .9s cubic-bezier(.23,1,.32,1)}
-  .js .stage.on{opacity:1;transform:none;pointer-events:auto}
+  .hero-content{position:relative;z-index:3;width:100%}
   .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
-  .hero h1 .dot{color:var(--amber)}
-  .stage-2 .big-line,.stage-3 .big-line{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.04}
-  .stage-2 .big-line{font-size:clamp(2rem,5.4vw,4.4rem);max-width:20ch}
-  .stage .lede{margin-top:1.6rem;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.55;color:rgba(255,255,255,.82);max-width:46ch}
-  .stage-1 .lede{max-width:40ch}
-  .stage-2 .actions{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1rem}
-  .stage-3 .big-line{font-size:clamp(2.4rem,6.5vw,5.8rem);max-width:15ch}
-  .stage-3 .partners{margin-top:1.5rem;color:rgba(255,255,255,.74);font-size:1.02rem;max-width:44ch}
-  .hero-dots{position:absolute;right:clamp(1.1rem,3vw,2.2rem);top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:.85rem}
-  .hero-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28);transition:background .3s,transform .3s}
-  .hero-dots i.on{background:var(--amber);transform:scale(1.35)}
-  @media(prefers-reduced-motion:reduce){
-    .hero-track{height:auto}
-    .hero-stage{position:relative;height:auto}
-    .js .stage,.stage{position:relative;opacity:1;transform:none;pointer-events:auto;min-height:100vh}
-    .hero-dots{display:none}
-  }
+  .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:rgba(255,255,255,.86);max-width:40ch}
+
+  /* ---------- hero follow-on bands (were the 3 hero scroll stages) ---------- */
+  .hero-band{position:relative;color:var(--white);overflow:hidden}
+  .band-focus{background:var(--harbour-deep)}
+  .band-focus::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(90% 120% at 12% -10%,rgba(46,111,149,.4),transparent 55%)}
+  .band-places{background:var(--harbour-abyss)}
+  .hero-band .wrap{position:relative;z-index:1}
+  .hero-band .big-line{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.04}
+  .band-focus .big-line{font-size:clamp(2rem,5.4vw,4.4rem);max-width:20ch}
+  .band-places .big-line{font-size:clamp(2.4rem,6.5vw,5.8rem);max-width:15ch}
+  .hero-band .actions{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1rem}
+  .band-places .partners{margin-top:1.5rem;color:rgba(255,255,255,.74);font-size:1.02rem;max-width:44ch}
 
   /* metric strip */
   .metrics{position:relative;z-index:2;margin-top:clamp(2rem,4vw,3rem);
@@ -460,6 +460,13 @@
       </svg>
       <span>Creative Tech North</span>
     </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#what">What it is</a>
+      <a href="#aims">Our aims</a>
+      <a href="#who">Who it&rsquo;s for</a>
+      <a href="#runs">How it runs</a>
+      <a href="#join">Get involved</a>
+    </nav>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay">
       Menu <span class="bars" aria-hidden="true"></span>
     </button>
@@ -483,44 +490,39 @@
 
 <main id="top">
 
-  <!-- HERO (cinematic multi-stage scroll) -->
-  <section class="hero">
-    <div class="hero-track">
-      <div class="hero-stage">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
-          <source src="assets/hero.mp4" type="video/mp4">
-        </video>
-        <div class="hero-tint" aria-hidden="true"></div>
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <div class="hero-stages">
-          <div class="stage stage-1 on">
-            <div class="wrap">
-              <h1>Creative Tech North</h1>
-              <p class="lede">A quarterly meet-up for creative and media professionals working with technology across the North of England.</p>
-            </div>
-          </div>
-          <div class="stage stage-2">
-            <div class="wrap">
-              <p class="big-line">AI is evolving faster than most teams can keep pace with, so each meet-up carries a strong focus on the subject.</p>
-              <div class="actions">
-                <a class="btn btn-primary" href="#join">Get involved <span class="arw" aria-hidden="true">&rarr;</span></a>
-                <a class="btn btn-dark" href="#what">What it is</a>
-              </div>
-            </div>
-          </div>
-          <div class="stage stage-3">
-            <div class="wrap">
-              <p class="big-line">Manchester. Liverpool.<br>Yorkshire in time.</p>
-              <div class="metrics" aria-label="At a glance">
-                <div class="m"><div class="k">Format</div><div class="v">Quarterly sessions</div></div>
-                <div class="m"><div class="k">Focus</div><div class="v">AI and creative technology</div></div>
-              </div>
-              <p class="partners">In partnership with FourPointZero and Dream Lab.</p>
-            </div>
-          </div>
-        </div>
-        <div class="hero-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-tint" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-content r">
+      <h1>Creative Tech North</h1>
+      <p class="lede">A quarterly meet-up for creative and media professionals working with technology across the North of England.</p>
+    </div>
+  </section>
+
+  <!-- AI FOCUS -->
+  <section class="hero-band band-focus">
+    <div class="wrap r">
+      <p class="big-line">AI is evolving faster than most teams can keep pace with, so each meet-up carries a strong focus on the subject.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#join">Get involved <span class="arw" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-dark" href="#what">What it is</a>
       </div>
+    </div>
+  </section>
+
+  <!-- PLACES -->
+  <section class="hero-band band-places">
+    <div class="wrap r">
+      <p class="big-line">Manchester. Liverpool.<br>Yorkshire in time.</p>
+      <div class="metrics" aria-label="At a glance">
+        <div class="m"><div class="k">Format</div><div class="v">Quarterly sessions</div></div>
+        <div class="m"><div class="k">Focus</div><div class="v">AI and creative technology</div></div>
+      </div>
+      <p class="partners">In partnership with FourPointZero and Dream Lab.</p>
     </div>
   </section>
 
@@ -734,29 +736,6 @@
     new IntersectionObserver(function(e){
       nav.classList.toggle('solid',!e[0].isIntersecting);
     },{rootMargin:'-81px 0px 0px 0px',threshold:0}).observe(hero);
-  })();
-
-  /* cinematic hero: crossfade the three stages as the tall track scrolls */
-  (function(){
-    var track=document.querySelector('.hero-track');
-    if(!track)return;
-    var stages=[].slice.call(track.querySelectorAll('.stage'));
-    var dots=[].slice.call(track.querySelectorAll('.hero-dots i'));
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-    var ticking=false;
-    function update(){
-      ticking=false;
-      var vh=window.innerHeight, total=track.offsetHeight-vh;
-      if(total<=0)return;
-      var p=Math.min(1,Math.max(0,(-track.getBoundingClientRect().top)/total));
-      var idx=p<0.34?0:(p<0.67?1:2);
-      stages.forEach(function(s,i){s.classList.toggle('on',i===idx);});
-      dots.forEach(function(d,i){d.classList.toggle('on',i===idx);});
-    }
-    function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
-    window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',onScroll,{passive:true});
-    update();
   })();
 
   /* reveal on enter */
