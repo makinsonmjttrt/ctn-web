@@ -132,62 +132,14 @@
     font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
   header.nav.solid .brand{color:var(--text-strong)}
   .brand .mark{width:48px;height:48px;flex:none;display:block}
-  /* inline top nav (desktop) */
-  .nav-links{display:flex;align-items:center;gap:clamp(1.3rem,2.4vw,2.1rem)}
-  .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;
+  /* inline top nav (all widths) */
+  .nav-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:clamp(.8rem,2.2vw,2.1rem)}
+  .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;white-space:nowrap;
     color:rgba(255,255,255,.82);transition:color .2s,opacity .2s}
   .nav-links a:hover{color:var(--white)}
   header.nav.solid .nav-links a{color:var(--ink);opacity:.82}
   header.nav.solid .nav-links a:hover{opacity:1;color:var(--harbour)}
-  /* hamburger trigger (mobile only) */
-  .menu-btn{display:none;align-items:center;gap:.6rem;background:transparent;border:0;cursor:pointer;
-    font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
-    color:rgba(255,255,255,.82);padding:.4rem 0;transition:color .3s ease}
-  header.nav.solid .menu-btn{color:var(--text-strong)}
-  @media(max-width:860px){.nav-links{display:none}.menu-btn{display:inline-flex}}
-  .menu-btn:hover{color:var(--amber)}
-  .menu-btn .bars{position:relative;width:22px;height:10px;flex:none}
-  .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s ease}
-  .menu-btn .bars::before{top:0}.menu-btn .bars::after{bottom:0}
-  /* full-screen overlay menu */
-  .menu-overlay{position:fixed;inset:0;z-index:120;background:var(--harbour-abyss);color:var(--white);
-    display:flex;flex-direction:column;justify-content:center;
-    opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.23,1,.32,1),visibility .5s}
-  .menu-overlay.open{opacity:1;visibility:visible}
-  .menu-overlay::before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(80% 90% at 80% 0%,rgba(46,111,149,.4),transparent 60%)}
-  .menu-close{position:absolute;top:clamp(1.4rem,3vw,2rem);right:var(--gutter);z-index:2;
-    background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,.7);
-    font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:.6rem;transition:color .25s}
-  .menu-close:hover{color:var(--amber)}
-  .menu-close .x{position:relative;width:16px;height:16px}
-  .menu-close .x::before,.menu-close .x::after{content:"";position:absolute;top:50%;left:0;right:0;height:1.5px;background:currentColor}
-  .menu-close .x::before{transform:rotate(45deg)}.menu-close .x::after{transform:rotate(-45deg)}
-  .menu-nav{position:relative;z-index:1;display:flex;flex-direction:column;gap:.2rem}
-  .menu-nav a{text-decoration:none;color:var(--white);font-family:var(--font-display);font-weight:800;
-    letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.4rem,8vw,5.5rem);
-    display:inline-flex;align-items:baseline;gap:1.1rem;width:max-content;max-width:100%;
-    opacity:.55;transform:translateY(18px);transition:opacity .5s cubic-bezier(.23,1,.32,1),transform .5s cubic-bezier(.23,1,.32,1),color .25s}
-  .menu-overlay.open .menu-nav a{opacity:.9;transform:none}
-  .menu-nav a:hover{opacity:1;color:var(--sky)}
-  .menu-nav a .idx{font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.14em;
-    color:var(--sky);opacity:.7;transform:translateY(-.4em)}
-  .menu-overlay.open .menu-nav a:nth-child(1){transition-delay:.10s}
-  .menu-overlay.open .menu-nav a:nth-child(2){transition-delay:.16s}
-  .menu-overlay.open .menu-nav a:nth-child(3){transition-delay:.22s}
-  .menu-overlay.open .menu-nav a:nth-child(4){transition-delay:.28s}
-  .menu-overlay.open .menu-nav a:nth-child(5){transition-delay:.34s}
-  .menu-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(1.6rem,4vw,2.6rem);z-index:1;
-    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
-    font-size:.85rem;color:rgba(255,255,255,.6);border-top:1px solid var(--line-dark-soft);padding-top:1.3rem}
-  .menu-foot a{color:var(--sky);text-decoration:none}
-  body.menu-open{overflow:hidden}
-  @media(prefers-reduced-motion:reduce){
-    .menu-overlay,.menu-nav a{transition-duration:1ms}
-    .menu-nav a{transform:none;opacity:.9}
-  }
-
+  @media(max-width:520px){.nav-links{gap:.6rem .85rem}.nav-links a{font-size:.8rem}}
   /* ---------- hero ---------- */
   .hero{position:relative;isolation:isolate;overflow:hidden;
     background:var(--harbour-abyss);color:var(--white);
@@ -467,26 +419,8 @@
       <a href="#runs">How it runs</a>
       <a href="#join">Get involved</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay">
-      Menu <span class="bars" aria-hidden="true"></span>
-    </button>
   </div>
 </header>
-
-<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
-  <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true"></span></button>
-  <nav class="menu-nav wrap" aria-label="Primary">
-    <a href="#what"><span class="idx">01</span> What it is</a>
-    <a href="#aims"><span class="idx">02</span> Our aims</a>
-    <a href="#who"><span class="idx">03</span> Who it&rsquo;s for</a>
-    <a href="#runs"><span class="idx">04</span> How it runs</a>
-    <a href="#join"><span class="idx">05</span> Get involved</a>
-  </nav>
-  <div class="menu-foot">
-    <span>A joint initiative between FourPointZero and Dream Lab.</span>
-    <a href="mailto:hello@creativetechnorth.co.uk">hello@creativetechnorth.co.uk</a>
-  </div>
-</div>
 
 <main id="top">
 
@@ -507,10 +441,6 @@
   <section class="hero-band band-focus">
     <div class="wrap r">
       <p class="big-line">AI is evolving faster than most teams can keep pace with, so each meet-up carries a strong focus on the subject.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#join">Get involved <span class="arw" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-dark" href="#what">What it is</a>
-      </div>
     </div>
   </section>
 
@@ -715,18 +645,6 @@
 <script>
   document.documentElement.classList.add('js');
   document.body.classList.add('js');
-
-  /* full-screen menu overlay */
-  (function(){
-    var btn=document.getElementById('menuBtn'),ov=document.getElementById('menuOverlay'),cl=document.getElementById('menuClose');
-    if(!btn||!ov)return;
-    function open(){ov.classList.add('open');document.body.classList.add('menu-open');btn.setAttribute('aria-expanded','true');}
-    function close(){ov.classList.remove('open');document.body.classList.remove('menu-open');btn.setAttribute('aria-expanded','false');}
-    btn.addEventListener('click',open);
-    if(cl)cl.addEventListener('click',close);
-    ov.querySelectorAll('.menu-nav a').forEach(function(a){a.addEventListener('click',close);});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
-  })();
 
   /* nav stays transparent over the hero, solidifies after it */
   (function(){
