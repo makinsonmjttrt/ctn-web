@@ -132,12 +132,53 @@
     font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
   header.nav.solid .brand{color:var(--text-strong)}
   .brand .mark{width:48px;height:48px;flex:none;display:block}
-  .nav-links{display:flex;align-items:center;gap:2.1rem}
-  .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.78);transition:color .2s,opacity .2s}
-  .nav-links a:hover{color:var(--white)}
-  header.nav.solid .nav-links a{color:var(--ink);opacity:.78}
-  header.nav.solid .nav-links a:hover{opacity:1;color:var(--harbour)}
-  @media(max-width:860px){.nav-links{display:none}}
+  /* MENU trigger (sovereignai pattern: wordmark + MENU) */
+  .menu-btn{display:inline-flex;align-items:center;gap:.6rem;background:transparent;border:0;cursor:pointer;
+    font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(255,255,255,.82);padding:.4rem 0;transition:color .3s ease}
+  header.nav.solid .menu-btn{color:var(--text-strong)}
+  .menu-btn:hover{color:var(--amber)}
+  .menu-btn .bars{position:relative;width:22px;height:10px;flex:none}
+  .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s ease}
+  .menu-btn .bars::before{top:0}.menu-btn .bars::after{bottom:0}
+  /* full-screen overlay menu */
+  .menu-overlay{position:fixed;inset:0;z-index:120;background:var(--harbour-abyss);color:var(--white);
+    display:flex;flex-direction:column;justify-content:center;
+    opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.23,1,.32,1),visibility .5s}
+  .menu-overlay.open{opacity:1;visibility:visible}
+  .menu-overlay::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(80% 90% at 80% 0%,rgba(46,111,149,.4),transparent 60%)}
+  .menu-close{position:absolute;top:clamp(1.4rem,3vw,2rem);right:var(--gutter);z-index:2;
+    background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,.7);
+    font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:.6rem;transition:color .25s}
+  .menu-close:hover{color:var(--amber)}
+  .menu-close .x{position:relative;width:16px;height:16px}
+  .menu-close .x::before,.menu-close .x::after{content:"";position:absolute;top:50%;left:0;right:0;height:1.5px;background:currentColor}
+  .menu-close .x::before{transform:rotate(45deg)}.menu-close .x::after{transform:rotate(-45deg)}
+  .menu-nav{position:relative;z-index:1;display:flex;flex-direction:column;gap:.2rem}
+  .menu-nav a{text-decoration:none;color:var(--white);font-family:var(--font-display);font-weight:800;
+    letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.4rem,8vw,5.5rem);
+    display:inline-flex;align-items:baseline;gap:1.1rem;width:max-content;max-width:100%;
+    opacity:.55;transform:translateY(18px);transition:opacity .5s cubic-bezier(.23,1,.32,1),transform .5s cubic-bezier(.23,1,.32,1),color .25s}
+  .menu-overlay.open .menu-nav a{opacity:.9;transform:none}
+  .menu-nav a:hover{opacity:1;color:var(--sky)}
+  .menu-nav a .idx{font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.14em;
+    color:var(--sky);opacity:.7;transform:translateY(-.4em)}
+  .menu-overlay.open .menu-nav a:nth-child(1){transition-delay:.10s}
+  .menu-overlay.open .menu-nav a:nth-child(2){transition-delay:.16s}
+  .menu-overlay.open .menu-nav a:nth-child(3){transition-delay:.22s}
+  .menu-overlay.open .menu-nav a:nth-child(4){transition-delay:.28s}
+  .menu-overlay.open .menu-nav a:nth-child(5){transition-delay:.34s}
+  .menu-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(1.6rem,4vw,2.6rem);z-index:1;
+    display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+    font-size:.85rem;color:rgba(255,255,255,.6);border-top:1px solid var(--line-dark-soft);padding-top:1.3rem}
+  .menu-foot a{color:var(--sky);text-decoration:none}
+  body.menu-open{overflow:hidden}
+  @media(prefers-reduced-motion:reduce){
+    .menu-overlay,.menu-nav a{transition-duration:1ms}
+    .menu-nav a{transform:none;opacity:.9}
+  }
 
   /* ---------- hero ---------- */
   .hero{background:var(--harbour-abyss);color:var(--white);position:relative;isolation:isolate;margin-top:-80px}
@@ -251,15 +292,15 @@
     .panel .body{padding:.4rem 1.6rem 1.8rem;height:auto}
   }
 
-  /* ---------- audience grid ---------- */
-  .aud{margin-top:3.2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-  .aud .card{background:var(--surface-card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:1.7rem 1.6rem;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
-  .aud .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px -22px rgba(23,59,92,.4);border-color:var(--sky)}
-  .aud .card .k{font-weight:600;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--label)}
-  .aud .card h3{font-size:1.18rem;margin-top:.8rem;color:var(--text-strong);letter-spacing:-.01em;line-height:1.25}
-  @media(max-width:860px){.aud{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.aud{grid-template-columns:1fr}}
+  /* ---------- who it's for: editorial statement list ---------- */
+  .who-list{margin-top:clamp(2.5rem,5vw,4rem);border-top:1px solid var(--line)}
+  .who-list .row{display:grid;grid-template-columns:minmax(0,9rem) 1fr;gap:clamp(1rem,4vw,3rem);
+    align-items:baseline;padding-block:clamp(1.5rem,3vw,2.3rem);border-bottom:1px solid var(--line)}
+  .who-list .row .k{font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--label);padding-top:.5rem}
+  .who-list .row h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+    font-size:clamp(1.55rem,3.8vw,2.9rem);color:var(--text-strong)}
+  @media(max-width:640px){.who-list .row{grid-template-columns:1fr;gap:.45rem}}
 
   /* ---------- giant theme moment ---------- */
   .moment{background:var(--paper);overflow:hidden}
@@ -325,35 +366,30 @@
   @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:2rem}}
   @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 
-  /* ---------- aims bento ---------- */
-  .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);
-    padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
-    box-shadow:0 18px 38px -12px rgba(11,30,48,.5),0 6px 14px -6px rgba(11,30,48,.38);
-    transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
-  .bento .tile:hover{transform:translateY(-8px);box-shadow:0 40px 70px -16px rgba(11,30,48,.72),0 10px 22px -8px rgba(11,30,48,.5)}
-  .tile .n{font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-    font-variant-numeric:tabular-nums;color:var(--label)}
-  .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
-    font-size:1.35rem;margin-top:.55rem;line-height:1.08}
-  .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:.86;max-width:46ch}
-  .tile.big{grid-column:span 2;aspect-ratio:3/2;padding:2.3rem}
-  .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
-  .tile.big p{font-size:1.06rem}
-  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;
-    background-position:center;background-color:var(--harbour-deep);border-color:transparent}
-  .tile.photo::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
-  .tile.photo>*{position:relative;z-index:1}
-  .tile.photo .n{color:var(--sky)}
-  .tile.dark{background:var(--harbour);color:#fff;border-color:transparent}
-  .tile.dark .n{color:var(--sky)}
-  .tile.light{background:var(--surface-card);color:var(--text-body)}
-  .tile.light .n{color:var(--label)}
-  .tile.light h3{color:var(--text-strong)}
-  @media(max-width:560px){
-    .bento{grid-template-columns:1fr}
-    .tile.big{grid-column:auto}
+  /* ---------- aims: full-bleed editorial statement bands ---------- */
+  .aims-editorial{margin-top:clamp(3rem,6vw,5rem);display:flex;flex-direction:column}
+  .aim{position:relative;min-height:clamp(66vh,80vh,860px);display:flex;align-items:center;
+    padding-block:clamp(4rem,10vw,8rem);overflow:hidden;color:#fff;
+    background-color:var(--harbour-deep);background-size:cover;background-position:center;background-image:var(--img)}
+  .aim::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(11,30,48,.92) 0%,rgba(11,30,48,.66) 46%,rgba(11,30,48,.30) 100%)}
+  .aim:nth-child(even)::before{
+    background:linear-gradient(270deg,rgba(11,30,48,.92) 0%,rgba(11,30,48,.66) 46%,rgba(11,30,48,.30) 100%)}
+  .aim .wrap{position:relative;z-index:1;width:100%}
+  .aim .inner{max-width:38rem}
+  .aim:nth-child(even) .inner{margin-left:auto;text-align:right}
+  .aim .idx{font-family:var(--font-body);font-weight:600;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--sky);font-variant-numeric:tabular-nums}
+  .aim h3{font-size:clamp(2.3rem,6.2vw,4.8rem);letter-spacing:-.035em;line-height:.98;margin-top:1.1rem;color:#fff}
+  .aim .rule{width:3rem;height:2px;background:var(--amber);margin:1.7rem 0}
+  .aim:nth-child(even) .rule{margin-left:auto}
+  .aim p{font-size:clamp(1.06rem,1.6vw,1.3rem);line-height:1.6;color:rgba(255,255,255,.88);max-width:46ch}
+  .aim:nth-child(even) p{margin-left:auto}
+  @media(max-width:700px){
+    .aim{min-height:62vh}
+    .aim::before,.aim:nth-child(even)::before{background:linear-gradient(180deg,rgba(11,30,48,.5),rgba(11,30,48,.88))}
+    .aim:nth-child(even) .inner{margin-left:0;text-align:left}
+    .aim:nth-child(even) .rule,.aim:nth-child(even) p{margin-left:0}
   }
 
   /* ---------- responsive pass ---------- */
@@ -387,8 +423,8 @@
     .js .r.in{opacity:1;transform:none}
   }
   @media (prefers-reduced-motion:reduce){
-    .btn,.btn .arw,.aud .card,.bento .tile,header.nav,.brand{transition-duration:1ms}
-    .bento .tile:hover,.aud .card:hover,.btn:hover .arw{transform:none}
+    .btn,.btn .arw,header.nav,.brand{transition-duration:1ms}
+    .btn:hover .arw{transform:none}
   }
 
   /* ---------- sovereign-style motion ---------- */
@@ -403,13 +439,6 @@
     .js .hero-in>.lede{animation-delay:.42s}
     .js .hero-in>.actions{animation-delay:.58s}
     .js .hero-in>.metrics{animation-delay:.74s}
-    /* bento tiles: staggered scale-reveal */
-    .js .tile.r{opacity:0;transform:translateY(34px) scale(.97);transition:opacity .85s cubic-bezier(.23,1,.32,1),transform .85s cubic-bezier(.23,1,.32,1)}
-    .js .tile.r.in{opacity:1;transform:none}
-    .js .tile.r:nth-child(2){transition-delay:.08s}
-    .js .tile.r:nth-child(3){transition-delay:.15s}
-    .js .tile.r:nth-child(4){transition-delay:.22s}
-    .js .tile.r:nth-child(5){transition-delay:.29s}
   }
   /* scroll-linked parallax (sovereignai scrollLinked) */
   @supports (animation-timeline:view()){
@@ -430,14 +459,26 @@
       </svg>
       <span>Creative Tech North</span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#what">What it is</a>
-      <a href="#aims">Our aims</a>
-      <a href="#who">Who it's for</a>
-      <a href="#runs">How it runs</a>
-    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay">
+      Menu <span class="bars" aria-hidden="true"></span>
+    </button>
   </div>
 </header>
+
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
+  <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true"></span></button>
+  <nav class="menu-nav wrap" aria-label="Primary">
+    <a href="#what"><span class="idx">01</span> What it is</a>
+    <a href="#aims"><span class="idx">02</span> Our aims</a>
+    <a href="#who"><span class="idx">03</span> Who it&rsquo;s for</a>
+    <a href="#runs"><span class="idx">04</span> How it runs</a>
+    <a href="#join"><span class="idx">05</span> Get involved</a>
+  </nav>
+  <div class="menu-foot">
+    <span>A joint initiative between FourPointZero and Dream Lab.</span>
+    <a href="mailto:hello@creativetechnorth.co.uk">hello@creativetechnorth.co.uk</a>
+  </div>
+</div>
 
 <main id="top">
 
@@ -493,35 +534,55 @@
     </div>
   </section>
 
-  <!-- CONVICTION ACCORDION (five aims) -->
+  <!-- AIMS (full-bleed editorial statement bands) -->
   <section id="aims" class="conv">
     <div class="wrap">
       <div class="sec-head r">
         <h2>What we&rsquo;re actually here to do.</h2>
         <p class="say">The North of England has a wealth of industry talent. Our aim is to showcase it and help it grow.</p>
       </div>
-      <div class="bento">
-        <article class="tile r photo big" style="--img:url('assets/aim1.jpg')">
+    </div>
+    <div class="aims-editorial">
+      <article class="aim" style="--img:url('assets/aim1.jpg')">
+        <div class="wrap"><div class="inner r">
+          <div class="idx">Aim 01</div>
           <h3>Connect the region properly</h3>
+          <div class="rule"></div>
           <p>Studios, broadcasters, agencies, universities and technology partners across the North know each other far less well than they should. Getting the right people in one room, regularly, is the first job.</p>
-        </article>
-        <article class="tile r photo" style="--img:url('assets/aim2.jpg')">
+        </div></div>
+      </article>
+      <article class="aim" style="--img:url('assets/aim2.jpg')">
+        <div class="wrap"><div class="inner r">
+          <div class="idx">Aim 02</div>
           <h3>Share what&rsquo;s actually working</h3>
+          <div class="rule"></div>
           <p>Real projects with real numbers, explained by the people who did the work, including the parts that went badly. Those tend to be the most useful.</p>
-        </article>
-        <article class="tile r photo" style="--img:url('assets/aim3.jpg')">
+        </div></div>
+      </article>
+      <article class="aim" style="--img:url('assets/aim3.jpg')">
+        <div class="wrap"><div class="inner r">
+          <div class="idx">Aim 03</div>
           <h3>Open up opportunity</h3>
+          <div class="rule"></div>
           <p>Circulating funding routes, joint bids, partnerships and commercial openings so they reach the whole community, not just the usual few.</p>
-        </article>
-        <article class="tile r photo" style="--img:url('assets/aim4.jpg')">
+        </div></div>
+      </article>
+      <article class="aim" style="--img:url('assets/aim4.jpg')">
+        <div class="wrap"><div class="inner r">
+          <div class="idx">Aim 04</div>
           <h3>Raise the region&rsquo;s profile</h3>
+          <div class="rule"></div>
           <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
-        </article>
-        <article class="tile r photo" style="--img:url('assets/aim5.jpg')">
+        </div></div>
+      </article>
+      <article class="aim" style="--img:url('assets/aim5.jpg')">
+        <div class="wrap"><div class="inner r">
+          <div class="idx">Aim 05</div>
           <h3>Build a route in</h3>
+          <div class="rule"></div>
           <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and the people already doing it.</p>
-        </article>
-      </div>
+        </div></div>
+      </article>
     </div>
   </section>
 
@@ -532,13 +593,13 @@
         <h2>Everyone is welcome.</h2>
         <p class="say">From creative technology professionals and producers to creatives, artists and AI content platforms.</p>
       </div>
-      <div class="aud r">
-        <div class="card"><div class="k">Technologists</div><h3>Creative technology professionals and the teams who support them</h3></div>
-        <div class="card"><div class="k">Production</div><h3>Producers and production teams</h3></div>
-        <div class="card"><div class="k">Creatives</div><h3>Creatives, designers and directors</h3></div>
-        <div class="card"><div class="k">Artists</div><h3>Artists and makers</h3></div>
-        <div class="card"><div class="k">Platforms</div><h3>AI content platforms</h3></div>
-        <div class="card"><div class="k">Studios</div><h3>Studios, agencies and independents</h3></div>
+      <div class="who-list r">
+        <div class="row"><div class="k">Technologists</div><h3>Creative technology professionals and the teams who support them</h3></div>
+        <div class="row"><div class="k">Production</div><h3>Producers and production teams</h3></div>
+        <div class="row"><div class="k">Creatives</div><h3>Creatives, designers and directors</h3></div>
+        <div class="row"><div class="k">Artists</div><h3>Artists and makers</h3></div>
+        <div class="row"><div class="k">Platforms</div><h3>AI content platforms</h3></div>
+        <div class="row"><div class="k">Studios</div><h3>Studios, agencies and independents</h3></div>
       </div>
     </div>
   </section>
@@ -651,18 +712,16 @@
   document.documentElement.classList.add('js');
   document.body.classList.add('js');
 
-  /* theme toggle (system-aware, explicit override persisted) */
+  /* full-screen menu overlay */
   (function(){
-    var root=document.documentElement,key='ctn-theme',btn=document.getElementById('themeToggle');
-    try{var s=localStorage.getItem(key);if(s==='dark'||s==='light')root.setAttribute('data-theme',s);}catch(e){}
-    if(btn)btn.addEventListener('click',function(){
-      var cur=root.getAttribute('data-theme');
-      var sysDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
-      var isDark=cur?cur==='dark':sysDark;
-      var next=isDark?'light':'dark';
-      root.setAttribute('data-theme',next);
-      try{localStorage.setItem(key,next)}catch(e){}
-    });
+    var btn=document.getElementById('menuBtn'),ov=document.getElementById('menuOverlay'),cl=document.getElementById('menuClose');
+    if(!btn||!ov)return;
+    function open(){ov.classList.add('open');document.body.classList.add('menu-open');btn.setAttribute('aria-expanded','true');}
+    function close(){ov.classList.remove('open');document.body.classList.remove('menu-open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',open);
+    if(cl)cl.addEventListener('click',close);
+    ov.querySelectorAll('.menu-nav a').forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
   })();
 
   /* nav stays transparent over the hero, solidifies after it */
