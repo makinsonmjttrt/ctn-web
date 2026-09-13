@@ -157,7 +157,7 @@
     -webkit-mask-image:linear-gradient(180deg,transparent,#000 40%);mask-image:linear-gradient(180deg,transparent,#000 40%);}
   .hero-canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
   /* hero video + harbour colour mask */
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;background:var(--harbour-abyss);z-index:0}
   .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(155deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%);
     mix-blend-mode:screen}
