@@ -74,6 +74,10 @@
   }
   img{max-width:100%}
 
+  /* film grain (sovereignai texture) */
+  body::before{content:"";position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
   h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.03;letter-spacing:-.02em;text-wrap:balance;margin:0}
   p{margin:0}
   a{color:inherit}
@@ -377,12 +381,40 @@
   /* ---------- reveal (rest state visible) ---------- */
   .r{opacity:1}
   @media(prefers-reduced-motion:no-preference){
-    .js .r{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .js .r{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1)}
     .js .r.in{opacity:1;transform:none}
   }
   @media (prefers-reduced-motion:reduce){
     .btn,.btn .arw,.aud .card,.bento .tile,header.nav,.brand{transition-duration:1ms}
     .bento .tile:hover,.aud .card:hover,.btn:hover .arw{transform:none}
+  }
+
+  /* ---------- sovereign-style motion ---------- */
+  @keyframes soUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes ghostDrift{from{transform:translateY(-50%) translateX(7%)}to{transform:translateY(-50%) translateX(-7%)}}
+  @keyframes aiDrift{from{transform:translateY(40px)}to{transform:translateY(-40px)}}
+  @media (prefers-reduced-motion:no-preference){
+    /* hero load entrance, staggered */
+    .js .hero-in>*{animation:soUp .9s cubic-bezier(.23,1,.32,1) both}
+    .js .hero-in>.eyebrow{animation-delay:.05s}
+    .js .hero-in>h1{animation-delay:.16s}
+    .js .hero-in>.lede{animation-delay:.42s}
+    .js .hero-in>.actions{animation-delay:.58s}
+    .js .hero-in>.metrics{animation-delay:.74s}
+    /* bento tiles: staggered scale-reveal */
+    .js .tile.r{opacity:0;transform:translateY(34px) scale(.97);transition:opacity .85s cubic-bezier(.23,1,.32,1),transform .85s cubic-bezier(.23,1,.32,1)}
+    .js .tile.r.in{opacity:1;transform:none}
+    .js .tile.r:nth-child(2){transition-delay:.08s}
+    .js .tile.r:nth-child(3){transition-delay:.15s}
+    .js .tile.r:nth-child(4){transition-delay:.22s}
+    .js .tile.r:nth-child(5){transition-delay:.29s}
+  }
+  /* scroll-linked parallax (sovereignai scrollLinked) */
+  @supports (animation-timeline:view()){
+    @media (prefers-reduced-motion:no-preference){
+      .ghost{animation:ghostDrift linear both;animation-timeline:view();animation-range:cover}
+      .moment .big{animation:aiDrift linear both;animation-timeline:view();animation-range:entry 10% cover 90%}
+    }
   }
 </style>
 
@@ -454,24 +486,24 @@
         <h2>What we&rsquo;re actually here to do.</h2>
         <p class="say">The North of England has a wealth of industry talent. Our aim is to showcase it and help it grow.</p>
       </div>
-      <div class="bento r">
-        <article class="tile photo big" style="--img:url('assets/aim1.jpg')">
+      <div class="bento">
+        <article class="tile r photo big" style="--img:url('assets/aim1.jpg')">
           <h3>Connect the region properly</h3>
           <p>Studios, broadcasters, agencies, universities and technology partners across the North know each other far less well than they should. Getting the right people in one room, regularly, is the first job.</p>
         </article>
-        <article class="tile photo" style="--img:url('assets/aim2.jpg')">
+        <article class="tile r photo" style="--img:url('assets/aim2.jpg')">
           <h3>Share what&rsquo;s actually working</h3>
           <p>Real projects with real numbers, explained by the people who did the work, including the parts that went badly. Those tend to be the most useful.</p>
         </article>
-        <article class="tile photo" style="--img:url('assets/aim3.jpg')">
+        <article class="tile r photo" style="--img:url('assets/aim3.jpg')">
           <h3>Open up opportunity</h3>
           <p>Circulating funding routes, joint bids, partnerships and commercial openings so they reach the whole community, not just the usual few.</p>
         </article>
-        <article class="tile photo" style="--img:url('assets/aim4.jpg')">
+        <article class="tile r photo" style="--img:url('assets/aim4.jpg')">
           <h3>Raise the region&rsquo;s profile</h3>
           <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
         </article>
-        <article class="tile photo" style="--img:url('assets/aim5.jpg')">
+        <article class="tile r photo" style="--img:url('assets/aim5.jpg')">
           <h3>Build a route in</h3>
           <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and the people already doing it.</p>
         </article>
