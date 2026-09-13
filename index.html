@@ -140,55 +140,48 @@
   @media(max-width:860px){.nav-links{display:none}}
 
   /* ---------- hero ---------- */
-  .hero{
-    background:var(--harbour-abyss);color:var(--white);position:relative;overflow:hidden;isolation:isolate;
-    margin-top:-80px;padding-top:80px;
-  }
-  .hero .field{position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(120% 90% at 78% 18%,rgba(46,111,149,.55),transparent 55%),
-      radial-gradient(80% 70% at 12% 90%,rgba(46,111,149,.30),transparent 60%),
-      radial-gradient(60% 50% at 95% 95%,rgba(127,179,213,.16),transparent 60%),
-      linear-gradient(160deg,var(--harbour) 0%,var(--harbour-deep) 46%,var(--harbour-abyss) 100%);
-  }
-  /* faint topographic horizon lines */
-  .hero .field::after{content:"";position:absolute;inset:0;opacity:.4;
-    background:repeating-linear-gradient(158deg,transparent 0 46px,rgba(127,179,213,.05) 46px 47px);
-    -webkit-mask-image:linear-gradient(180deg,transparent,#000 40%);mask-image:linear-gradient(180deg,transparent,#000 40%);}
-  .hero-canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
-  /* hero video + harbour colour mask */
+  .hero{background:var(--harbour-abyss);color:var(--white);position:relative;isolation:isolate;margin-top:-80px}
+  .hero-track{position:relative;height:320vh}
+  .hero-stage{position:sticky;top:0;height:100vh;overflow:hidden}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
   .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(155deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%);
-    mix-blend-mode:screen}
+    background:linear-gradient(155deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%);mix-blend-mode:screen}
   .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(11,30,48,.12) 0%,rgba(11,30,48,.34) 52%,rgba(11,30,48,.84) 100%)}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;z-index:2;
-    background:linear-gradient(90deg,transparent,var(--amber),transparent);opacity:.5}
-  .hero-in{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
-    padding-top:clamp(6rem,10vw,9rem);padding-bottom:clamp(2.5rem,4vw,4rem)}
-  .hero .coords{position:absolute;top:clamp(2rem,5vw,3.2rem);right:0;
-    font-weight:600;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
-    color:rgba(127,179,213,.7);text-align:right;line-height:2.1;display:none}
-  @media(min-width:1040px){.hero .coords{display:block}}
-  .hero h1{
-    font-size:clamp(3rem,10.5vw,9rem);letter-spacing:-.045em;font-weight:800;
-    margin-top:1.5rem;max-width:16ch;line-height:.94;
-  }
+    background:linear-gradient(180deg,rgba(11,30,48,.34) 0%,rgba(11,30,48,.30) 46%,rgba(11,30,48,.84) 100%)}
+  .hero-stages{position:absolute;inset:0;z-index:3}
+  .stage{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding-top:80px;opacity:1}
+  .stage .wrap{width:100%}
+  .stage .eyebrow{margin-bottom:1.6rem}
+  .js .stage{opacity:0;transform:translateY(28px);pointer-events:none;
+    transition:opacity .9s cubic-bezier(.23,1,.32,1),transform .9s cubic-bezier(.23,1,.32,1)}
+  .js .stage.on{opacity:1;transform:none;pointer-events:auto}
+  .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
   .hero h1 .dot{color:var(--amber)}
-  .hero .lede{margin-top:1.9rem;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.55;
-    color:rgba(255,255,255,.82);max-width:44ch}
-  .hero .actions{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1rem}
+  .stage-2 .big-line,.stage-3 .big-line{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.04}
+  .stage-2 .big-line{font-size:clamp(2rem,5.4vw,4.4rem);max-width:20ch}
+  .stage-2 .lede{margin-top:1.6rem;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.55;color:rgba(255,255,255,.82);max-width:46ch}
+  .stage-2 .actions{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1rem}
+  .stage-3 .big-line{font-size:clamp(2.4rem,6.5vw,5.8rem);max-width:15ch}
+  .stage-3 .partners{margin-top:1.5rem;color:rgba(255,255,255,.74);font-size:1.02rem;max-width:44ch}
+  .hero-dots{position:absolute;right:clamp(1.1rem,3vw,2.2rem);top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:.85rem}
+  .hero-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28);transition:background .3s,transform .3s}
+  .hero-dots i.on{background:var(--amber);transform:scale(1.35)}
+  @media(prefers-reduced-motion:reduce){
+    .hero-track{height:auto}
+    .hero-stage{position:relative;height:auto}
+    .js .stage,.stage{position:relative;opacity:1;transform:none;pointer-events:auto;min-height:100vh}
+    .hero-dots{display:none}
+  }
 
-  /* metric strip pinned to hero base */
-  .metrics{position:relative;z-index:2;margin-top:clamp(2rem,4vw,3.2rem);
-    border-top:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(2,1fr)}
-  .metrics .m{padding:1.6rem clamp(1rem,3vw,2.2rem) 2rem 0;border-right:1px solid var(--line-dark-soft)}
+  /* metric strip */
+  .metrics{position:relative;z-index:2;margin-top:clamp(2rem,4vw,3rem);
+    border-top:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(2,1fr);max-width:640px}
+  .metrics .m{padding:1.4rem clamp(1rem,3vw,2.2rem) 1.6rem 0;border-right:1px solid var(--line-dark-soft)}
   .metrics .m:last-child{border-right:0}
   .metrics .m .k{font-weight:600;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sky)}
   .metrics .m .v{font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,2.1vw,1.5rem);
-    letter-spacing:-.01em;margin-top:.75rem;color:var(--white)}
-  @media(max-width:860px){.metrics{grid-template-columns:1fr;gap:0}
+    letter-spacing:-.01em;margin-top:.7rem;color:var(--white)}
+  @media(max-width:860px){.metrics{grid-template-columns:1fr}
     .metrics .m{border-right:0;border-top:1px solid var(--line-dark-soft);padding-right:0}
     .metrics .m:first-child{border-top:0}}
 
@@ -457,24 +450,43 @@
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO (cinematic multi-stage scroll) -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
-      <source src="assets/hero.mp4" type="video/mp4">
-    </video>
-    <div class="hero-tint" aria-hidden="true"></div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="wrap hero-in">
-      <span class="eyebrow on-dark">Quarterly sessions &middot; The North of England</span>
-      <h1>Clear minds.<br>Big ideas<span class="dot">.</span></h1>
-      <p class="lede">A new quarterly meet-up for creative and media professionals working with technology across the North of England. In partnership with FourPointZero and Dream Lab.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#join">Get involved <span class="arw" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-dark" href="#what">What it is</a>
-      </div>
-      <div class="metrics" aria-label="At a glance">
-        <div class="m"><div class="k">Format</div><div class="v">Quarterly sessions</div></div>
-        <div class="m"><div class="k">Region</div><div class="v">Manchester &middot; Liverpool &middot; Yorkshire</div></div>
+    <div class="hero-track">
+      <div class="hero-stage">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-tint" aria-hidden="true"></div>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-stages">
+          <div class="stage stage-1 on">
+            <div class="wrap">
+              <span class="eyebrow on-dark">Quarterly sessions &middot; The North of England</span>
+              <h1>Clear minds.<br>Big ideas<span class="dot">.</span></h1>
+            </div>
+          </div>
+          <div class="stage stage-2">
+            <div class="wrap">
+              <p class="big-line">A new quarterly meet-up for creative and media professionals working with technology across the North.</p>
+              <div class="actions">
+                <a class="btn btn-primary" href="#join">Get involved <span class="arw" aria-hidden="true">&rarr;</span></a>
+                <a class="btn btn-dark" href="#what">What it is</a>
+              </div>
+            </div>
+          </div>
+          <div class="stage stage-3">
+            <div class="wrap">
+              <p class="big-line">Manchester. Liverpool.<br>Yorkshire in time.</p>
+              <div class="metrics" aria-label="At a glance">
+                <div class="m"><div class="k">Format</div><div class="v">Quarterly sessions</div></div>
+                <div class="m"><div class="k">Focus</div><div class="v">AI &amp; creative technology</div></div>
+              </div>
+              <p class="partners">In partnership with FourPointZero and Dream Lab.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
       </div>
     </div>
   </section>
@@ -666,16 +678,37 @@
     });
   })();
 
-  /* nav solidifies once past the hero (IntersectionObserver, no scroll listener) */
+  /* nav stays transparent over the hero, solidifies after it */
   (function(){
     var nav=document.getElementById('nav');
-    var s=document.createElement('div');
-    s.style.cssText='position:absolute;top:64px;left:0;width:1px;height:1px;pointer-events:none';
-    document.body.appendChild(s);
-    if(!('IntersectionObserver' in window)){nav.classList.add('solid');return;}
+    var hero=document.querySelector('.hero');
+    if(!hero||!('IntersectionObserver' in window)){nav.classList.add('solid');return;}
     new IntersectionObserver(function(e){
       nav.classList.toggle('solid',!e[0].isIntersecting);
-    },{threshold:0}).observe(s);
+    },{rootMargin:'-81px 0px 0px 0px',threshold:0}).observe(hero);
+  })();
+
+  /* cinematic hero: crossfade the three stages as the tall track scrolls */
+  (function(){
+    var track=document.querySelector('.hero-track');
+    if(!track)return;
+    var stages=[].slice.call(track.querySelectorAll('.stage'));
+    var dots=[].slice.call(track.querySelectorAll('.hero-dots i'));
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var ticking=false;
+    function update(){
+      ticking=false;
+      var vh=window.innerHeight, total=track.offsetHeight-vh;
+      if(total<=0)return;
+      var p=Math.min(1,Math.max(0,(-track.getBoundingClientRect().top)/total));
+      var idx=p<0.34?0:(p<0.67?1:2);
+      stages.forEach(function(s,i){s.classList.toggle('on',i===idx);});
+      dots.forEach(function(d,i){d.classList.toggle('on',i===idx);});
+    }
+    function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+    update();
   })();
 
   /* reveal on enter */
