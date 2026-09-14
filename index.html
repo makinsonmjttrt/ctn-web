@@ -357,8 +357,8 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="none" poster="assets/hero-poster.jpg" aria-hidden="true">
-      <source data-src="assets/hero.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-tint" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
@@ -582,17 +582,14 @@
     ids.forEach(function(id){io.observe(document.getElementById(id));});
   })();
 
-  /* hero video: desktop + motion-ok only. Mobile/small/reduced-motion get the gradient and never download the file. */
+  /* hero video: desktop plays; mobile/small/reduced-motion drop it so the gradient shows and it stops loading */
   (function(){
     var v=document.querySelector('.hero-video');
     if(!v) return;
     var mm=window.matchMedia;
     var small=mm&&mm('(max-width:860px)').matches;
     var reduce=mm&&mm('(prefers-reduced-motion:reduce)').matches;
-    if(small||reduce){ v.remove(); return; }
-    var s=v.querySelector('source');
-    if(s&&s.dataset.src){ s.src=s.dataset.src; v.load(); }
-    var p=v.play(); if(p&&p.catch){ p.catch(function(){}); }
+    if(small||reduce){ try{v.pause();}catch(e){} v.removeAttribute('autoplay'); v.remove(); }
   })();
 </script>
 
