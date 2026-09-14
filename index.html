@@ -274,6 +274,10 @@
   .tile.photo::before{content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
   .tile.photo>*{position:relative;z-index:1}
+  /* below desktop, tiles narrow enough that fixed 3:2 would clip copy: let them grow */
+  @media(max-width:860px){
+    .bento .tile,.bento .tile.big{aspect-ratio:auto;min-height:clamp(220px,50vw,300px)}
+  }
   @media(max-width:560px){
     .bento{grid-template-columns:1fr}
     .tile.big{grid-column:auto}
