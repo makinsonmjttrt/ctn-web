@@ -1,3 +1,13 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:title" content="Creative Tech North">
+<meta property="og:description" content="A quarterly, free, industry-led meet-up for creative and media professionals working with technology across the North of England.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.creativetechnorth.org.uk/">
+<meta name="twitter:card" content="summary_large_image">
 <title>Creative Tech North</title>
 <meta name="description" content="Quarterly sessions on technology in creative and media, across the North of England. Independent, industry-led, free to attend.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,41 +90,8 @@
 
   .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
 
-  /* ---------- coordinate label / eyebrow ---------- */
-  .eyebrow{
-    font-family:var(--font-body);font-weight:600;
-    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:.65rem;color:var(--label);
-  }
-  .eyebrow::before{content:"";width:1.7rem;height:1px;background:var(--amber)}
-  .eyebrow.on-dark{color:var(--sky)}
-
-  /* ---------- buttons ---------- */
-  .btn{
-    display:inline-flex;align-items:center;gap:.5rem;
-    font-family:var(--font-body);font-weight:600;font-size:.95rem;
-    padding:.9rem 1.5rem;border-radius:6px;border:1.5px solid transparent;
-    text-decoration:none;cursor:pointer;
-    transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
-  }
-  .btn .arw{transition:transform .25s cubic-bezier(.16,1,.3,1)}
-  .btn:hover .arw{transform:translateX(4px)}
-  .btn-primary{background:var(--amber);color:var(--ink);border-color:var(--amber)}
-  .btn-primary:hover{background:var(--amber-deep);border-color:var(--amber-deep)}
-  .btn-ghost{background:transparent;color:var(--outline);border-color:var(--outline)}
-  .btn-ghost:hover{background:var(--outline);color:var(--paper)}
-  .btn-dark{background:transparent;color:var(--amber);border-color:var(--amber)}
-  .btn-dark:hover{background:var(--amber);color:var(--ink)}
+  /* focus ring */
   a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
-
-  /* --- theme toggle --- */
-  .nav-end{display:flex;align-items:center;gap:.9rem}
-  .theme-toggle{width:40px;height:40px;flex:none;display:inline-flex;align-items:center;justify-content:center;
-    border:1.5px solid currentColor;border-radius:6px;background:transparent;color:rgba(255,255,255,.78);
-    cursor:pointer;transition:color .25s,border-color .25s,background .25s}
-  header.nav.solid .theme-toggle{color:var(--text-strong)}
-  .theme-toggle:hover{color:var(--amber)}
-  .theme-toggle svg{display:block}
 
   /* ---------- nav ---------- */
   header.nav{
@@ -132,10 +109,15 @@
   .nav-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:clamp(.8rem,2.2vw,2.1rem)}
   .nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;white-space:nowrap;
     color:rgba(255,255,255,.82);transition:color .2s,opacity .2s}
-  .nav-links a:hover{color:var(--white)}
+  .nav-links a:hover,.nav-links a.active{color:var(--white)}
+  .nav-links a.active{opacity:1}
   header.nav.solid .nav-links a{color:var(--ink);opacity:.82}
-  header.nav.solid .nav-links a:hover{opacity:1;color:var(--harbour)}
+  header.nav.solid .nav-links a:hover,header.nav.solid .nav-links a.active{opacity:1;color:var(--harbour)}
   @media(max-width:520px){.nav-links{gap:.6rem .85rem}.nav-links a{font-size:.8rem}}
+  /* skip link */
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--amber);color:var(--ink);
+    font-family:var(--font-body);font-weight:600;font-size:.85rem;padding:.7rem 1.1rem;border-radius:6px}
+  .skip-link:focus{left:1rem;top:1rem}
   /* ---------- hero ---------- */
   .hero{position:relative;isolation:isolate;overflow:hidden;
     background:var(--harbour-abyss);color:var(--white);
@@ -143,9 +125,9 @@
     margin-top:-80px;padding:calc(80px + clamp(2rem,5vw,4rem)) 0 clamp(3rem,7vw,6rem)}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
   .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(155deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%);mix-blend-mode:screen}
+    background:linear-gradient(155deg,rgba(23,59,92,.34) 0%,rgba(16,43,67,.44) 55%,rgba(11,30,48,.62) 100%)}
   .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(11,30,48,.34) 0%,rgba(11,30,48,.30) 46%,rgba(11,30,48,.84) 100%)}
+    background:linear-gradient(180deg,rgba(11,30,48,.5) 0%,rgba(11,30,48,.42) 46%,rgba(11,30,48,.92) 100%)}
   .hero-content{position:relative;z-index:3;width:100%}
   .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
   .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:rgba(255,255,255,.86);max-width:40ch}
@@ -199,50 +181,7 @@
   .editorial .lead p{margin-top:1.5rem;font-size:1.13rem;line-height:1.65;opacity:.86;max-width:52ch}
   .editorial .lead p + p{margin-top:1.1rem}
 
-  /* ---------- conviction accordion (signature) ---------- */
   .conv{background:var(--paper-hi)}
-  .acc{margin-top:3.2rem;display:grid;
-    grid-template-columns:minmax(0,1.9fr) repeat(4,72px);gap:14px;align-items:stretch;min-height:520px}
-  .panel{
-    border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;cursor:pointer;
-    background:var(--paper);
-    transition:background .4s cubic-bezier(.16,1,.3,1);
-  }
-  .panel:not(.active):hover{background:var(--mist)}
-  .panel:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
-  .panel .num{position:absolute;top:1.4rem;left:1.5rem;font-weight:600;font-size:.72rem;
-    letter-spacing:.12em;color:var(--label);font-variant-numeric:tabular-nums;z-index:2}
-  /* collapsed: vertical label */
-  .panel .vlabel{position:absolute;left:0;right:0;bottom:1.6rem;top:4rem;
-    display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
-  .panel .vlabel span{writing-mode:vertical-rl;transform:rotate(180deg);
-    font-family:var(--font-display);font-weight:800;font-size:1.15rem;letter-spacing:-.005em;
-    color:var(--text-strong);white-space:nowrap}
-  /* expanded content */
-  .panel .body{opacity:0;visibility:hidden;transition:opacity .4s ease .05s;
-    padding:clamp(1.8rem,3vw,2.8rem);height:100%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
-  .panel .body .eb{font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
-  .panel .body h3{font-size:clamp(1.7rem,3.3vw,2.6rem);letter-spacing:-.025em;margin-top:.6rem;color:var(--white)}
-  .panel .body .rule{width:2.6rem;height:2px;background:var(--amber);margin:1.4rem 0}
-  .panel .body p{font-size:1.02rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:46ch}
-  .panel.active{grid-column:span 1;background-color:var(--harbour);
-    background-image:linear-gradient(100deg,rgba(11,30,48,.92) 0%,rgba(11,30,48,.74) 46%,rgba(16,43,67,.5) 100%),var(--img,none);
-    background-size:cover;background-position:center}
-  .panel.active .num{color:var(--sky)}
-  .panel.active .vlabel{opacity:0}
-  .panel.active .body{opacity:1;visibility:visible}
-  /* the layout: active panel is the wide first track; JS reorders via order + grid template swap */
-  @media(prefers-reduced-motion:reduce){.panel,.panel .body{transition:none}}
-
-  @media(max-width:860px){
-    .acc{grid-template-columns:1fr;min-height:0;gap:12px}
-    .panel{min-height:0}
-    .panel .num{position:static;padding:1.3rem 1.5rem 0}
-    .panel .vlabel{position:static;padding:.5rem 1.5rem 1.4rem;top:auto;bottom:auto;justify-content:flex-start;align-items:center}
-    .panel .vlabel span{writing-mode:horizontal-tb;transform:none;font-size:1.25rem}
-    .panel.active .vlabel{display:none}
-    .panel .body{padding:.4rem 1.6rem 1.8rem;height:auto}
-  }
 
   /* ---------- who it's for: editorial statement list ---------- */
   .who-list{margin-top:clamp(2.5rem,5vw,4rem);border-top:1px solid var(--line)}
@@ -276,11 +215,6 @@
   }
 
   /* ---------- how it runs ---------- */
-  .meta-grid{margin-top:3.2rem;display:grid;grid-template-columns:1.1fr .9fr;
-    gap:clamp(2rem,5vw,4.5rem);align-items:start}
-  .rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
-  .rules li{display:flex;gap:.9rem;font-size:1.04rem;line-height:1.5}
-  .rules li::before{content:"";width:.5rem;height:.5rem;margin-top:.5rem;flex:none;background:var(--amber);border-radius:50%}
   .facts{display:grid;grid-template-columns:1fr 1fr;
     gap:clamp(1.6rem,3.5vw,2.6rem) clamp(2rem,5vw,4rem);
     border-top:1px solid var(--line-dark);padding-top:clamp(2rem,4vw,2.8rem)}
@@ -288,7 +222,6 @@
   .facts .item .v{display:block;margin-top:.55rem;font-family:var(--font-display);font-weight:800;
     letter-spacing:-.01em;font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.2;color:var(--white)}
   @media(max-width:640px){.facts{grid-template-columns:1fr;gap:1.5rem}}
-  @media(max-width:760px){.meta-grid{grid-template-columns:1fr}}
 
   /* ---------- join ---------- */
   .join{background:var(--harbour-deep);color:var(--white);position:relative;overflow:hidden}
@@ -298,8 +231,13 @@
   .join h2{font-size:clamp(2rem,4.8vw,3.4rem);letter-spacing:-.025em}
   .join p{margin-top:1.4rem;font-size:1.15rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:54ch}
   .join .roles{margin-top:1.9rem;display:flex;flex-wrap:wrap;gap:.6rem}
-  .join .roles span{font-size:.85rem;font-weight:500;padding:.45rem .9rem;
-    border:1px solid var(--line-dark);border-radius:999px;color:var(--sky)}
+  .join .roles a{font-size:.85rem;font-weight:500;padding:.45rem .9rem;text-decoration:none;
+    border:1px solid var(--line-dark);border-radius:999px;color:var(--sky);
+    transition:border-color .2s,color .2s,background .2s}
+  .join .roles a:hover{border-color:var(--amber);color:var(--amber)}
+  .join .contact-line{margin-top:1.7rem;font-size:1.05rem;color:rgba(255,255,255,.82)}
+  .join .contact-line a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,176,0,.4);transition:border-color .2s}
+  .join .contact-line a:hover{border-bottom-color:var(--amber)}
   .join .actions{margin-top:2.3rem;display:flex;flex-wrap:wrap;gap:1rem}
 
   /* ---------- footer ---------- */
@@ -308,7 +246,7 @@
   footer .brand{color:var(--white);margin-bottom:1rem}
   footer .partners{max-width:34ch;line-height:1.6}
   footer .partners strong{color:var(--white);font-weight:600}
-  .foot-col h4{font-family:var(--font-body);font-weight:600;font-size:.66rem;letter-spacing:.15em;
+  .foot-col .foot-h{font-family:var(--font-body);font-weight:600;font-size:.66rem;letter-spacing:.15em;
     text-transform:uppercase;color:var(--sky);margin:0 0 1rem}
   .foot-col a{display:block;text-decoration:none;color:rgba(255,255,255,.72);padding:.35rem 0;transition:color .2s}
   .foot-col a:hover{color:var(--white)}
@@ -343,18 +281,12 @@
 
   /* ---------- responsive pass ---------- */
   .brand span{white-space:nowrap}
-  /* stacked aim panels: darker vertical scrim so text reads over the photo */
-  @media(max-width:860px){
-    .panel.active{background-image:linear-gradient(180deg,rgba(11,30,48,.55),rgba(16,43,67,.78)),var(--img,none)}
-  }
   /* phones: keep the nav on one line, tighten the frame, scale the hero */
   @media(max-width:560px){
     :root{--gutter:1rem}
     .nav-in{height:68px;gap:.7rem}
     .brand{font-size:1.05rem;gap:.6rem}
     .brand .mark{width:36px;height:36px}
-    .theme-toggle{display:none}
-    .btn{padding:.68rem .95rem;font-size:.85rem;gap:.4rem}
     .hero h1{font-size:clamp(2.5rem,12vw,3.4rem)}
     .hero .lede{font-size:1.05rem}
     .sec-head .say,.editorial .lead p,.join p{font-size:1.04rem}
@@ -362,7 +294,6 @@
   /* very small phones: mark only, so the nav never overflows */
   @media(max-width:400px){
     .brand span{display:none}
-    .btn{padding:.62rem .85rem}
   }
 
   /* ---------- reveal (rest state visible) ---------- */
@@ -372,23 +303,12 @@
     .js .r.in{opacity:1;transform:none}
   }
   @media (prefers-reduced-motion:reduce){
-    .btn,.btn .arw,header.nav,.brand,.bento .tile{transition-duration:1ms}
-    .btn:hover .arw,.bento .tile.in:hover,.bento .tile:hover{transform:none}
+    header.nav,.brand,.bento .tile{transition-duration:1ms}
+    .bento .tile.in:hover,.bento .tile:hover{transform:none}
   }
 
-  /* ---------- sovereign-style motion ---------- */
-  @keyframes soUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  /* ---------- ghost wordmark drift ---------- */
   @keyframes ghostDrift{from{transform:translateY(-50%) translateX(7%)}to{transform:translateY(-50%) translateX(-7%)}}
-  @keyframes aiDrift{from{transform:translateY(40px)}to{transform:translateY(-40px)}}
-  @media (prefers-reduced-motion:no-preference){
-    /* hero load entrance, staggered */
-    .js .hero-in>*{animation:soUp .9s cubic-bezier(.23,1,.32,1) both}
-    .js .hero-in>.eyebrow{animation-delay:.05s}
-    .js .hero-in>h1{animation-delay:.16s}
-    .js .hero-in>.lede{animation-delay:.42s}
-    .js .hero-in>.actions{animation-delay:.58s}
-    .js .hero-in>.metrics{animation-delay:.74s}
-  }
   /* scroll-linked parallax (sovereignai scrollLinked) */
   @supports (animation-timeline:view()){
     @media (prefers-reduced-motion:no-preference){
@@ -396,6 +316,11 @@
     }
   }
 </style>
+</head>
+<body>
+
+
+<a class="skip-link" href="#what">Skip to content</a>
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -554,8 +479,12 @@
       <h2 style="margin-top:1.1rem">Dates for the first meet-up land in the next couple of weeks.</h2>
       <p>Follow the page to hear first. If you would like to be a founding supporter, speak, or offer a venue, we would like to hear from you.</p>
       <div class="roles">
-        <span>Founding supporters</span><span>Speakers</span><span>Venues</span><span>Attendees</span>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Founding%20supporter">Founding supporters</a>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Speaking%20at%20Creative%20Tech%20North">Speakers</a>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Offering%20a%20venue">Venues</a>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Attending">Attendees</a>
       </div>
+      <p class="contact-line">Or just say hello: <a href="mailto:hello@creativetechnorth.org.uk">hello@creativetechnorth.org.uk</a></p>
     </div>
   </section>
 </main>
@@ -575,22 +504,21 @@
         <p class="partners">A joint initiative between <strong>FourPointZero</strong> and <strong>Dream Lab</strong>.</p>
       </div>
       <div class="foot-col">
-        <h4>Explore</h4>
+        <p class="foot-h">Explore</p>
         <a href="#what">What it is</a>
         <a href="#aims">Our aims</a>
         <a href="#who">Who it's for</a>
         <a href="#runs">How it runs</a>
       </div>
       <div class="foot-col">
-        <h4>The group</h4>
+        <p class="foot-h">The group</p>
         <a href="#runs">Terms of reference</a>
-        <a href="#runs">Ground rules</a>
-        <a href="#join">Steering group</a>
+        <a href="#legislation">Legislation</a>
       </div>
       <div class="foot-col">
-        <h4>Get involved</h4>
-        <a href="#join">Become a supporter</a>
-        <a href="#join">Speak or host</a>
+        <p class="foot-h">Get involved</p>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Founding%20supporter">Become a supporter</a>
+        <a href="mailto:hello@creativetechnorth.org.uk?subject=Speaking%20or%20hosting">Speak or host</a>
         <a href="mailto:hello@creativetechnorth.org.uk">Contact</a>
       </div>
     </div>
@@ -625,29 +553,22 @@
     els.forEach(function(e){io.observe(e)});
   })();
 
-  /* accordion: one panel expanded at a time; reorder so active fills the wide track */
+  /* scrollspy: mark the nav link for the section currently in view */
   (function(){
-    var acc=document.getElementById('acc');
-    if(!acc)return;
-    var panels=[].slice.call(acc.querySelectorAll('.panel'));
-    var wide='minmax(0,1.9fr)';
-    function layout(){
-      if(window.innerWidth<=860){acc.style.gridTemplateColumns='1fr';return;}
-      var cols=panels.map(function(p){return p.classList.contains('active')?wide:'72px';});
-      acc.style.gridTemplateColumns=cols.join(' ');
-    }
-    function activate(p){
-      panels.forEach(function(x){var on=x===p;x.classList.toggle('active',on);x.setAttribute('aria-selected',on?'true':'false');});
-      layout();
-    }
-    panels.forEach(function(p){
-      p.addEventListener('click',function(){activate(p);});
-      p.addEventListener('keydown',function(e){
-        if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(p);}
+    if(!('IntersectionObserver' in window))return;
+    var links=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+    var map={};
+    links.forEach(function(a){var id=a.getAttribute('href').slice(1);var s=document.getElementById(id);if(s)map[id]=a;});
+    var ids=Object.keys(map);if(!ids.length)return;
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
+          var a=map[en.target.id];if(a){a.classList.add('active');a.setAttribute('aria-current','true');}
+        }
       });
-    });
-    layout();
-    window.addEventListener('resize',layout,{passive:true});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    ids.forEach(function(id){io.observe(document.getElementById(id));});
   })();
 
   /* hero video: honor reduced-motion (pause, show poster) */
@@ -660,3 +581,6 @@
     }
   })();
 </script>
+
+</body>
+</html>
