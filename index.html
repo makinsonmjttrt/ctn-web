@@ -250,6 +250,13 @@
   .who-list .row h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
     font-size:clamp(1.55rem,3.8vw,2.9rem);color:var(--text-strong)}
   @media(max-width:640px){.who-list .row{grid-template-columns:1fr;gap:.45rem}}
+  @media(prefers-reduced-motion:no-preference){
+    .js .who-list .row.r:nth-child(2){transition-delay:.07s}
+    .js .who-list .row.r:nth-child(3){transition-delay:.14s}
+    .js .who-list .row.r:nth-child(4){transition-delay:.21s}
+    .js .who-list .row.r:nth-child(5){transition-delay:.28s}
+    .js .who-list .row.r:nth-child(6){transition-delay:.35s}
+  }
 
 
   /* ---------- legislation ---------- */
@@ -488,13 +495,13 @@
         <h2>Every part of the industry, in one room.</h2>
         <p class="say">From creative technology professionals and producers to creatives, artists and AI content platforms. Everyone is welcome.</p>
       </div>
-      <div class="who-list r">
-        <div class="row"><div class="k">Technologists</div><h3>Creative technology professionals and the teams who support them</h3></div>
-        <div class="row"><div class="k">Production</div><h3>Producers and production teams</h3></div>
-        <div class="row"><div class="k">Creatives</div><h3>Creatives, designers and directors</h3></div>
-        <div class="row"><div class="k">Artists</div><h3>Artists and makers</h3></div>
-        <div class="row"><div class="k">Platforms</div><h3>AI content platforms</h3></div>
-        <div class="row"><div class="k">Studios</div><h3>Studios, agencies and independents</h3></div>
+      <div class="who-list">
+        <div class="row r"><div class="k">Technologists</div><h3>Creative technology professionals and the teams who support them</h3></div>
+        <div class="row r"><div class="k">Production</div><h3>Producers and production teams</h3></div>
+        <div class="row r"><div class="k">Creatives</div><h3>Creatives, designers and directors</h3></div>
+        <div class="row r"><div class="k">Artists</div><h3>Artists and makers</h3></div>
+        <div class="row r"><div class="k">Platforms</div><h3>AI content platforms</h3></div>
+        <div class="row r"><div class="k">Studios</div><h3>Studios, agencies and independents</h3></div>
       </div>
     </div>
   </section>
