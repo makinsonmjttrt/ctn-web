@@ -319,30 +319,27 @@
   @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:2rem}}
   @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 
-  /* ---------- aims: full-bleed editorial statement bands ---------- */
-  .aims-editorial{margin-top:clamp(3rem,6vw,5rem);display:flex;flex-direction:column}
-  .aim{position:relative;min-height:clamp(66vh,80vh,860px);display:flex;align-items:center;
-    padding-block:clamp(4rem,10vw,8rem);overflow:hidden;color:#fff;
-    background-color:var(--harbour-deep);background-size:cover;background-position:center;background-image:var(--img)}
-  .aim::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(90deg,rgba(11,30,48,.92) 0%,rgba(11,30,48,.66) 46%,rgba(11,30,48,.30) 100%)}
-  .aim:nth-child(even)::before{
-    background:linear-gradient(270deg,rgba(11,30,48,.92) 0%,rgba(11,30,48,.66) 46%,rgba(11,30,48,.30) 100%)}
-  .aim .wrap{position:relative;z-index:1;width:100%}
-  .aim .inner{max-width:38rem}
-  .aim:nth-child(even) .inner{margin-left:auto;text-align:right}
-  .aim .idx{font-family:var(--font-body);font-weight:600;font-size:.72rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--sky);font-variant-numeric:tabular-nums}
-  .aim h3{font-size:clamp(2.3rem,6.2vw,4.8rem);letter-spacing:-.035em;line-height:.98;margin-top:1.1rem;color:#fff}
-  .aim .rule{width:3rem;height:2px;background:var(--amber);margin:1.7rem 0}
-  .aim:nth-child(even) .rule{margin-left:auto}
-  .aim p{font-size:clamp(1.06rem,1.6vw,1.3rem);line-height:1.6;color:rgba(255,255,255,.88);max-width:46ch}
-  .aim:nth-child(even) p{margin-left:auto}
-  @media(max-width:700px){
-    .aim{min-height:62vh}
-    .aim::before,.aim:nth-child(even)::before{background:linear-gradient(180deg,rgba(11,30,48,.5),rgba(11,30,48,.88))}
-    .aim:nth-child(even) .inner{margin-left:0;text-align:left}
-    .aim:nth-child(even) .rule,.aim:nth-child(even) p{margin-left:0}
+  /* ---------- aims bento ---------- */
+  .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);
+    padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
+    box-shadow:0 18px 38px -12px rgba(11,30,48,.5),0 6px 14px -6px rgba(11,30,48,.38);
+    transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
+  .bento .tile:hover{transform:translateY(-8px);box-shadow:0 40px 70px -16px rgba(11,30,48,.72),0 10px 22px -8px rgba(11,30,48,.5)}
+  .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
+    font-size:1.35rem;margin-top:.55rem;line-height:1.08}
+  .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:.86;max-width:46ch}
+  .tile.big{grid-column:span 2;aspect-ratio:3/2;padding:2.3rem}
+  .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
+  .tile.big p{font-size:1.06rem}
+  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;
+    background-position:center;background-color:var(--harbour-deep);border-color:transparent}
+  .tile.photo::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
+  .tile.photo>*{position:relative;z-index:1}
+  @media(max-width:560px){
+    .bento{grid-template-columns:1fr}
+    .tile.big{grid-column:auto}
   }
 
   /* ---------- responsive pass ---------- */
@@ -468,55 +465,35 @@
     </div>
   </section>
 
-  <!-- AIMS (full-bleed editorial statement bands) -->
+  <!-- AIMS (bento) -->
   <section id="aims" class="conv">
     <div class="wrap">
       <div class="sec-head r">
         <h2>Five things we want this to do.</h2>
         <p class="say">The North of England has a wealth of industry talent. Our aim is to showcase it and help it grow.</p>
       </div>
-    </div>
-    <div class="aims-editorial">
-      <article class="aim" style="--img:url('assets/aim1.jpg')">
-        <div class="wrap"><div class="inner r">
-          <div class="idx">Aim 01</div>
+      <div class="bento">
+        <article class="tile r photo big" style="--img:url('assets/aim1.jpg')">
           <h3>Connect the region properly</h3>
-          <div class="rule"></div>
           <p>Studios, broadcasters, agencies, universities and technology partners across the North know each other far less well than they should. Getting the right people together, regularly, is the first job.</p>
-        </div></div>
-      </article>
-      <article class="aim" style="--img:url('assets/aim2.jpg')">
-        <div class="wrap"><div class="inner r">
-          <div class="idx">Aim 02</div>
+        </article>
+        <article class="tile r photo" style="--img:url('assets/aim2.jpg')">
           <h3>Share what is working</h3>
-          <div class="rule"></div>
           <p>Real projects with real numbers, explained by the people who did the work. The parts that went badly are usually the most useful hour of the night.</p>
-        </div></div>
-      </article>
-      <article class="aim" style="--img:url('assets/aim3.jpg')">
-        <div class="wrap"><div class="inner r">
-          <div class="idx">Aim 03</div>
+        </article>
+        <article class="tile r photo" style="--img:url('assets/aim3.jpg')">
           <h3>Open up opportunity</h3>
-          <div class="rule"></div>
           <p>Circulating funding routes, joint bids, partnerships and commercial openings so they reach the whole community rather than the same handful of names each time.</p>
-        </div></div>
-      </article>
-      <article class="aim" style="--img:url('assets/aim4.jpg')">
-        <div class="wrap"><div class="inner r">
-          <div class="idx">Aim 04</div>
+        </article>
+        <article class="tile r photo" style="--img:url('assets/aim4.jpg')">
           <h3>Raise the region&rsquo;s profile</h3>
-          <div class="rule"></div>
           <p>The national conversation about creative technology still defaults to London. A visible Northern community changes who gets invited and who gets funded.</p>
-        </div></div>
-      </article>
-      <article class="aim" style="--img:url('assets/aim5.jpg')">
-        <div class="wrap"><div class="inner r">
-          <div class="idx">Aim 05</div>
+        </article>
+        <article class="tile r photo" style="--img:url('assets/aim5.jpg')">
           <h3>Build a route in</h3>
-          <div class="rule"></div>
           <p>Making it easier for people early in their careers, and those moving across from adjacent disciplines, to find their way into this work and to the people already doing it.</p>
-        </div></div>
-      </article>
+        </article>
+      </div>
     </div>
   </section>
 
