@@ -131,6 +131,13 @@
   .hero-content{position:relative;z-index:3;width:100%}
   .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
   .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:rgba(255,255,255,.86);max-width:40ch}
+  /* mobile / small devices: the network video reads as noise at phone size, use a gradient instead */
+  @media(max-width:860px){
+    .hero-video,.hero-tint{display:none}
+    .hero{background:
+      radial-gradient(125% 90% at 12% -8%,rgba(46,111,149,.42),transparent 55%),
+      linear-gradient(160deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%)}
+  }
 
   /* ---------- hero follow-on bands (were the 3 hero scroll stages) ---------- */
   .hero-band{position:relative;color:var(--white);overflow:hidden}
@@ -350,8 +357,8 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
-      <source src="assets/hero.mp4" type="video/mp4">
+    <video class="hero-video" muted loop playsinline preload="none" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source data-src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-tint" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
@@ -575,14 +582,17 @@
     ids.forEach(function(id){io.observe(document.getElementById(id));});
   })();
 
-  /* hero video: honor reduced-motion (pause, show poster) */
+  /* hero video: desktop + motion-ok only. Mobile/small/reduced-motion get the gradient and never download the file. */
   (function(){
     var v=document.querySelector('.hero-video');
     if(!v) return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-      v.removeAttribute('autoplay');
-      try{v.pause();}catch(e){}
-    }
+    var mm=window.matchMedia;
+    var small=mm&&mm('(max-width:860px)').matches;
+    var reduce=mm&&mm('(prefers-reduced-motion:reduce)').matches;
+    if(small||reduce){ v.remove(); return; }
+    var s=v.querySelector('source');
+    if(s&&s.dataset.src){ s.src=s.dataset.src; v.load(); }
+    var p=v.play(); if(p&&p.catch){ p.catch(function(){}); }
   })();
 </script>
 
