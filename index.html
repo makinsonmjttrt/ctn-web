@@ -177,6 +177,9 @@
 
   /* ---------- section scaffold ---------- */
   section{padding-block:clamp(6.5rem,12vw,10.5rem)}
+  /* amber divider on every section break */
+  main>section:not(.hero),footer{border-top:1px solid var(--amber);
+    border-image:linear-gradient(90deg,transparent,var(--amber),transparent) 1}
   .sec-head{max-width:46rem}
   .sec-head h2{font-size:clamp(2rem,4.6vw,3.3rem);margin-top:1.1rem;letter-spacing:-.025em}
   .sec-head .say{margin-top:1.4rem;font-size:1.13rem;line-height:1.65;color:var(--ink);opacity:.86;max-width:62ch}
@@ -291,8 +294,6 @@
   .join{background:var(--harbour-deep);color:var(--white);position:relative;overflow:hidden}
   .join::before{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(90% 120% at 18% -10%,rgba(46,111,149,.5),transparent 55%)}
-  .join::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--amber),transparent);opacity:.55}
   .join-in{position:relative;z-index:2;max-width:48rem}
   .join h2{font-size:clamp(2rem,4.8vw,3.4rem);letter-spacing:-.025em}
   .join p{margin-top:1.4rem;font-size:1.15rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:54ch}
