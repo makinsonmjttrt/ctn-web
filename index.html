@@ -23,10 +23,10 @@
     --sky:#49B4BE;
     --amber:#FFB000;
     --amber-deep:#E59D00;
-    --paper:#F8F5F0;
-    --paper-hi:#FDFBF8;
+    --paper:#FFFFFF;
+    --paper-hi:#F4F4F4;
     --ink:#172A3A;
-    --mist:#F1EEE7;
+    --mist:#ECECEC;
     --white:#FFFFFF;
 
     --line:rgba(23,42,58,.14);
@@ -84,11 +84,11 @@
     background:rgba(11,30,48,0);border-bottom:1px solid transparent;
     transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
   }
-  header.nav.solid{background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+  header.nav.solid{background:rgba(11,30,48,.72);backdrop-filter:blur(14px) saturate(1.1);border-bottom-color:var(--line-dark-soft)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;height:80px}
   .brand{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--white);
     font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
-  header.nav.solid .brand{color:var(--text-strong)}
+  header.nav.solid .brand{color:var(--white)}
   .brand .mark{width:48px;height:48px;flex:none;display:block}
   .ai{color:var(--amber)}
   /* inline top nav (all widths) */
@@ -97,8 +97,8 @@
     color:rgba(255,255,255,.82);transition:color .2s,opacity .2s}
   .nav-links a:hover,.nav-links a.active{color:var(--white)}
   .nav-links a.active{opacity:1}
-  header.nav.solid .nav-links a{color:var(--ink);opacity:.82}
-  header.nav.solid .nav-links a:hover,header.nav.solid .nav-links a.active{opacity:1;color:var(--harbour)}
+  header.nav.solid .nav-links a{color:rgba(255,255,255,.82);opacity:1}
+  header.nav.solid .nav-links a:hover,header.nav.solid .nav-links a.active{opacity:1;color:var(--white)}
   @media(max-width:520px){.nav-links{gap:.6rem .85rem}.nav-links a{font-size:.8rem}}
   /* skip link */
   .skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--amber);color:var(--ink);
@@ -127,7 +127,7 @@
 
   /* ---------- hero follow-on bands (were the 3 hero scroll stages) ---------- */
   .hero-band{position:relative;color:var(--white);overflow:hidden}
-  .band-focus{background:var(--harbour-deep)}
+  .band-focus{background:rgba(16,43,67,.92)}
   .band-focus::before{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(90% 120% at 12% -10%,rgba(46,111,149,.4),transparent 55%)}
   .hero-band .wrap{position:relative;z-index:1}
@@ -159,6 +159,7 @@
   .band-dark{background:var(--harbour);color:var(--white)}
   .band-dark .sec-head .say{color:rgba(255,255,255,.82)}
   .band-mist{background:var(--mist)}
+  #legislation{background:var(--paper-hi)}
 
   /* ---------- editorial ghost wordmark ---------- */
   .editorial{position:relative;overflow:hidden;background:var(--paper)}
@@ -313,7 +314,6 @@
 </style>
 </head>
 <body>
-
 
 <a class="skip-link" href="#what">Skip to content</a>
 
