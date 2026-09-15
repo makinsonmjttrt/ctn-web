@@ -17,15 +17,15 @@
 <style>
   :root{
     --harbour:#173B5C;
-    --harbour-deep:#1D1D1D;
-    --harbour-abyss:#1D1D1D;
+    --harbour-deep:#102B43;
+    --harbour-abyss:#0B1E30;
     --atlantic:#0E6E76;
     --sky:#49B4BE;
     --amber:#FFB000;
     --amber-deep:#E59D00;
     --paper:#FFFFFF;
     --paper-hi:#F4F4F4;
-    --ink:#172A3A;
+    --ink:#1D1D1D;
     --mist:#ECECEC;
     --white:#FFFFFF;
 
@@ -44,7 +44,7 @@
     /* semantic tokens (theme-swappable) */
     --surface-card:var(--white);
     --text-body:var(--ink);
-    --text-strong:var(--harbour);
+    --text-strong:#1D1D1D;
     --label:var(--atlantic);
     --outline:var(--harbour);
     --nav-bg:rgba(248,245,240,.88);
@@ -81,10 +81,10 @@
   /* ---------- nav ---------- */
   header.nav{
     position:sticky;top:0;z-index:60;
-    background:rgba(18,18,18,0);border-bottom:1px solid transparent;
+    background:rgba(11,30,48,0);border-bottom:1px solid transparent;
     transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
   }
-  header.nav.solid{background:rgba(18,18,18,.96);backdrop-filter:blur(8px);border-bottom-color:var(--line-dark-soft)}
+  header.nav.solid{background:rgba(11,30,48,.96);backdrop-filter:blur(8px);border-bottom-color:var(--line-dark-soft)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;height:80px}
   .brand{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--white);
     font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;transition:color .3s ease}
@@ -111,16 +111,18 @@
     margin-top:-80px;padding:calc(80px + clamp(2rem,5vw,4rem)) 0 clamp(3rem,7vw,6rem)}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
   .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(155deg,rgba(30,30,30,.34) 0%,rgba(24,24,24,.44) 55%,rgba(18,18,18,.62) 100%)}
+    background:linear-gradient(155deg,rgba(23,59,92,.34) 0%,rgba(16,43,67,.44) 55%,rgba(11,30,48,.62) 100%)}
   .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(18,18,18,.5) 0%,rgba(18,18,18,.42) 46%,rgba(18,18,18,.92) 100%)}
+    background:linear-gradient(180deg,rgba(11,30,48,.5) 0%,rgba(11,30,48,.42) 46%,rgba(11,30,48,.92) 100%)}
   .hero-content{position:relative;z-index:3;width:100%}
   .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
   .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:var(--white);max-width:40ch}
   /* mobile / small devices: the network video reads as noise at phone size, use a gradient instead */
   @media(max-width:860px){
     .hero-video,.hero-tint{display:none}
-    .hero{background:linear-gradient(160deg,#262626 0%,#1D1D1D 55%,#161616 100%)}
+    .hero{background:
+      radial-gradient(125% 90% at 12% -8%,rgba(46,111,149,.42),transparent 55%),
+      linear-gradient(160deg,var(--harbour) 0%,var(--harbour-deep) 55%,var(--harbour-abyss) 100%)}
   }
 
   /* ---------- hero follow-on bands (were the 3 hero scroll stages) ---------- */
@@ -128,7 +130,7 @@
   .band-focus{background:var(--paper);overflow:visible}
   .band-focus::before{content:none}
   .band-focus>.wrap{background:var(--harbour-deep);border-radius:22px;
-    padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(18,18,18,.55)}
+    padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .hero-band .wrap{position:relative;z-index:1}
   .hero-band .big-line{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.04}
   .band-focus .big-line{font-size:clamp(2rem,5.4vw,4.4rem);max-width:22ch}
@@ -196,7 +198,7 @@
   /* ---------- legislation ---------- */
   .legis{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
   .legis .col{padding:clamp(1.6rem,3vw,2.4rem);background:var(--harbour-deep);color:var(--white);
-    border-radius:18px;box-shadow:0 26px 60px -30px rgba(18,18,18,.55)}
+    border-radius:18px;box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .legis .col + .col{padding:clamp(1.6rem,3vw,2.4rem)}
   .legis .col .tag{font-family:var(--font-display);font-weight:800;font-size:1.5rem;
     letter-spacing:-.01em;color:var(--white)}
@@ -220,7 +222,7 @@
   .join{background:var(--paper-hi);position:relative;overflow:visible}
   .join::before{content:none}
   .join .join-in{background:var(--harbour-deep);color:var(--white);border-radius:22px;max-width:64rem;
-    padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(18,18,18,.55)}
+    padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .join-in{position:relative;z-index:2;max-width:48rem}
   .join h2{font-size:clamp(2rem,4.8vw,3.4rem);letter-spacing:-.025em}
   .join p{margin-top:1.4rem;font-size:1.15rem;line-height:1.6;color:var(--white);max-width:54ch}
@@ -235,7 +237,7 @@
   .join .actions{margin-top:2.3rem;display:flex;flex-wrap:wrap;gap:1rem}
 
   /* ---------- footer ---------- */
-  footer{background:#1D1D1D;color:var(--white);padding-block:4rem 3rem;font-size:.92rem}
+  footer{background:var(--harbour-abyss);color:var(--white);padding-block:4rem 3rem;font-size:.92rem}
   .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem}
   footer .brand{color:var(--white);margin-bottom:1rem}
   footer .partners{max-width:34ch;line-height:1.6}
@@ -253,10 +255,10 @@
   .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,28px)}
   .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:0;
     padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
-    box-shadow:0 18px 38px -12px rgba(18,18,18,.5),0 6px 14px -6px rgba(18,18,18,.38);
+    box-shadow:0 18px 38px -12px rgba(11,30,48,.5),0 6px 14px -6px rgba(11,30,48,.38);
     transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s cubic-bezier(.16,1,.3,1)}
   .bento .tile.in:hover,.bento .tile:hover{transform:translateY(-6px) scale(1.008);z-index:2;
-    box-shadow:0 32px 60px -20px rgba(18,18,18,.6),0 10px 20px -10px rgba(18,18,18,.42)}
+    box-shadow:0 32px 60px -20px rgba(11,30,48,.6),0 10px 20px -10px rgba(11,30,48,.42)}
   .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
     font-size:1.35rem;margin-top:.55rem;line-height:1.08}
   .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:1;max-width:46ch}
@@ -266,7 +268,7 @@
   .tile.photo{color:#fff;background-image:var(--img);background-size:cover;
     background-position:center;background-color:var(--harbour-deep);background-clip:padding-box}
   .tile.photo::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(18,18,18,.28),rgba(18,18,18,.9))}
+    background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
   .tile.photo>*{position:relative;z-index:1}
   /* below desktop, tiles narrow enough that fixed 3:2 would clip copy: let them grow */
   @media(max-width:860px){
