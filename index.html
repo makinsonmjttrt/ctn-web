@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
 <meta property="og:title" content="Creative Tech North">
 <meta property="og:description" content="A quarterly, free, industry-led meet-up for creative and media professionals working with technology across the North of England.">
 <meta property="og:type" content="website">
@@ -49,24 +50,8 @@
     --nav-bg:rgba(248,245,240,.88);
   }
 
-  /* dark theme — system default, unless an explicit light choice */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --paper:#0D1D2C;--paper-hi:#0F2135;--mist:#0F2236;
-      --ink:#E9EEF2;
-      --line:rgba(255,255,255,.13);--line-soft:rgba(255,255,255,.07);
-      --surface-card:#15304A;--text-body:#E9EEF2;--text-strong:var(--sky);
-      --label:var(--sky);--outline:var(--sky);--nav-bg:rgba(11,26,40,.86);
-    }
-  }
-  /* dark theme — explicit toggle wins in both directions */
-  :root[data-theme="dark"]{
-    --paper:#0D1D2C;--paper-hi:#0F2135;--mist:#0F2236;
-    --ink:#E9EEF2;
-    --line:rgba(255,255,255,.13);--line-soft:rgba(255,255,255,.07);
-    --surface-card:#15304A;--text-body:#E9EEF2;--text-strong:var(--sky);
-    --label:var(--sky);--outline:var(--sky);--nav-bg:rgba(11,26,40,.86);
-  }
+  /* light theme only — the site does not follow the device's dark setting */
+  :root{color-scheme:light}
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
