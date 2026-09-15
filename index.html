@@ -196,7 +196,7 @@
 
 
   /* ---------- legislation ---------- */
-  .legis{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
+  .legis{margin-top:3rem;margin-inline:calc(-1 * var(--gutter));display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
   .legis .col{padding:clamp(1.6rem,3vw,2.4rem);background:var(--harbour-deep);color:var(--white);
     border-radius:22px;box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .legis .col + .col{padding:clamp(1.6rem,3vw,2.4rem)}
@@ -221,7 +221,7 @@
   /* ---------- join ---------- */
   .join{background:var(--paper-hi);position:relative;overflow:visible}
   .join::before{content:none}
-  .join .join-in{background:var(--harbour-deep);color:var(--white);border-radius:22px;max-width:64rem;
+  .join .join-in{background:var(--harbour-deep);color:var(--white);border-radius:22px;max-width:var(--wrap);
     padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .join-in{position:relative;z-index:2;max-width:48rem}
   .join h2{font-size:clamp(2rem,4.8vw,3.4rem);letter-spacing:-.025em}
@@ -252,7 +252,7 @@
   @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 
   /* ---------- aims bento ---------- */
-  .bento{margin-top:3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,28px)}
+  .bento{margin-top:3.2rem;margin-inline:calc(-1 * var(--gutter));display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,28px)}
   .bento .tile{position:relative;overflow:hidden;border-radius:var(--radius);border:0;
     padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/2;
     box-shadow:0 18px 38px -12px rgba(11,30,48,.5),0 6px 14px -6px rgba(11,30,48,.38);
