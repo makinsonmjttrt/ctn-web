@@ -198,7 +198,7 @@
   /* ---------- legislation ---------- */
   .legis{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
   .legis .col{padding:clamp(1.6rem,3vw,2.4rem);background:var(--harbour-deep);color:var(--white);
-    border-radius:18px;box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
+    border-radius:22px;box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .legis .col + .col{padding:clamp(1.6rem,3vw,2.4rem)}
   .legis .col .tag{font-family:var(--font-display);font-weight:800;font-size:1.5rem;
     letter-spacing:-.01em;color:var(--white)}
@@ -265,8 +265,9 @@
   .tile.big{grid-column:span 2;aspect-ratio:3/2;padding:2.3rem}
   .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
   .tile.big p{font-size:1.06rem}
-  .tile.photo{color:#fff;background-image:var(--img);background-size:cover;
+  .tile.photo{color:#fff;background-size:cover;
     background-position:center;background-color:var(--harbour-deep);background-clip:padding-box}
+  .tile.photo.in{background-image:var(--img)}
   .tile.photo::before{content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(11,30,48,.28),rgba(11,30,48,.9))}
   .tile.photo>*{position:relative;z-index:1}
@@ -349,7 +350,7 @@
     </video>
     <div class="hero-tint" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="wrap hero-content r">
+    <div class="wrap hero-content">
       <h1>Cre<span class="ai">a</span>t<span class="ai">i</span>ve Tech North</h1>
       <p class="lede">A quarterly meet-up for creative and media professionals working with technology across the North of England.</p>
     </div>
