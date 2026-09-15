@@ -165,9 +165,9 @@
 
   /* ---------- editorial ghost wordmark ---------- */
   .editorial{position:relative;overflow:hidden;background:var(--paper)}
-  .ghost{position:absolute;right:clamp(-2rem,-2vw,0rem);top:50%;transform:translateY(-50%);
-    font-family:var(--font-display);font-weight:800;font-size:clamp(11rem,32vw,30rem);
-    line-height:.8;letter-spacing:-.05em;color:var(--text-strong);opacity:.06;
+  .ghost{position:absolute;right:clamp(-3rem,-4vw,-1rem);top:50%;transform:translateY(-50%);
+    width:clamp(20rem,46vw,40rem);height:auto;aspect-ratio:1;
+    color:var(--text-strong);opacity:.08;
     pointer-events:none;user-select:none;z-index:0}
   .editorial .wrap{position:relative;z-index:1}
   .editorial .lead{max-width:34rem}
@@ -370,7 +370,7 @@
 
   <!-- EDITORIAL / WHAT IT IS -->
   <section id="what" class="editorial">
-    <div class="ghost" aria-hidden="true">NORTH</div>
+    <svg class="ghost" aria-hidden="true" viewBox="0 0 240 240"><g fill="none" stroke="currentColor"><circle cx="120" cy="120" r="116" stroke-width="2"/><circle cx="120" cy="120" r="90" stroke-width="1"/><path d="M120 2 v20 M120 218 v20 M2 120 h20 M218 120 h20" stroke-width="2"/><path d="M120 14 L140 100 L226 120 L140 140 L120 226 L100 140 L14 120 L100 100 Z" stroke-width="1.5"/></g><path d="M120 14 L140 100 L100 100 Z" fill="currentColor"/><circle cx="120" cy="120" r="6" fill="currentColor"/></svg>
     <div class="wrap">
       <div class="lead r">
         <h2>The work is already happening up here.</h2>
