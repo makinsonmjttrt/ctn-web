@@ -116,7 +116,7 @@
     background:linear-gradient(180deg,rgba(11,30,48,.5) 0%,rgba(11,30,48,.42) 46%,rgba(11,30,48,.92) 100%)}
   .hero-content{position:relative;z-index:3;width:100%}
   .hero h1{font-size:clamp(3rem,10vw,8.6rem);letter-spacing:-.045em;font-weight:800;line-height:.94;max-width:16ch}
-  .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:rgba(255,255,255,.86);max-width:40ch}
+  .hero .lede{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.5;color:var(--white);max-width:40ch}
   /* mobile / small devices: the network video reads as noise at phone size, use a gradient instead */
   @media(max-width:860px){
     .hero-video,.hero-tint{display:none}
@@ -156,10 +156,10 @@
     border-image:linear-gradient(90deg,transparent,var(--amber),transparent) 1}
   .sec-head{max-width:46rem}
   .sec-head h2{font-size:clamp(2rem,4.6vw,3.3rem);margin-top:1.1rem;letter-spacing:-.025em}
-  .sec-head .say{margin-top:1.4rem;font-size:1.13rem;line-height:1.65;color:var(--ink);opacity:.86;max-width:62ch}
+  .sec-head .say{margin-top:1.4rem;font-size:1.13rem;line-height:1.65;color:var(--ink);opacity:1;max-width:62ch}
   .band-dark{background:var(--harbour-deep);color:var(--white)}
   #runs{padding-block:clamp(3.25rem,6vw,5.5rem)}
-  .band-dark .sec-head .say{color:rgba(255,255,255,.82)}
+  .band-dark .sec-head .say{color:var(--white)}
   .band-mist{background:var(--mist)}
   #legislation{background:var(--paper-hi)}
 
@@ -172,7 +172,7 @@
   .editorial .wrap{position:relative;z-index:1}
   .editorial .lead{max-width:34rem}
   .editorial .lead h2{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.03em;margin-top:1.2rem}
-  .editorial .lead p{margin-top:1.5rem;font-size:1.13rem;line-height:1.65;opacity:.86;max-width:52ch}
+  .editorial .lead p{margin-top:1.5rem;font-size:1.13rem;line-height:1.65;opacity:1;max-width:52ch}
   .editorial .lead p + p{margin-top:1.1rem}
 
   .conv{background:var(--paper-hi)}
@@ -202,7 +202,7 @@
   .legis .col + .col{padding:clamp(1.6rem,3vw,2.4rem)}
   .legis .col .tag{font-family:var(--font-display);font-weight:800;font-size:1.5rem;
     letter-spacing:-.01em;color:var(--white)}
-  .legis .col p{margin-top:1rem;font-size:1.04rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:44ch}
+  .legis .col p{margin-top:1rem;font-size:1.04rem;line-height:1.6;color:var(--white);max-width:44ch}
   @media(max-width:640px){
     .legis{grid-template-columns:1fr}
     .legis .col{padding:clamp(1.6rem,5vw,2.2rem)}
@@ -225,26 +225,26 @@
     padding:clamp(2.2rem,5vw,3.8rem);box-shadow:0 26px 60px -30px rgba(11,30,48,.55)}
   .join-in{position:relative;z-index:2;max-width:48rem}
   .join h2{font-size:clamp(2rem,4.8vw,3.4rem);letter-spacing:-.025em}
-  .join p{margin-top:1.4rem;font-size:1.15rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:54ch}
+  .join p{margin-top:1.4rem;font-size:1.15rem;line-height:1.6;color:var(--white);max-width:54ch}
   .join .roles{margin-top:1.9rem;display:flex;flex-wrap:wrap;gap:.6rem}
   .join .roles a{font-size:.85rem;font-weight:500;padding:.45rem .9rem;text-decoration:none;
     border:1px solid var(--line-dark);border-radius:999px;color:var(--sky);
     transition:border-color .2s,color .2s,background .2s}
   .join .roles a:hover{border-color:var(--amber);color:var(--amber)}
-  .join .contact-line{margin-top:1.7rem;font-size:1.05rem;color:rgba(255,255,255,.82)}
+  .join .contact-line{margin-top:1.7rem;font-size:1.05rem;color:var(--white)}
   .join .contact-line a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,176,0,.4);transition:border-color .2s}
   .join .contact-line a:hover{border-bottom-color:var(--amber)}
   .join .actions{margin-top:2.3rem;display:flex;flex-wrap:wrap;gap:1rem}
 
   /* ---------- footer ---------- */
-  footer{background:var(--harbour-abyss);color:rgba(255,255,255,.62);padding-block:4rem 3rem;font-size:.92rem}
+  footer{background:var(--harbour-abyss);color:var(--white);padding-block:4rem 3rem;font-size:.92rem}
   .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem}
   footer .brand{color:var(--white);margin-bottom:1rem}
   footer .partners{max-width:34ch;line-height:1.6}
   footer .partners strong{color:var(--white);font-weight:600}
   .foot-col .foot-h{font-family:var(--font-body);font-weight:600;font-size:.66rem;letter-spacing:.15em;
     text-transform:uppercase;color:var(--sky);margin:0 0 1rem}
-  .foot-col a{display:block;text-decoration:none;color:rgba(255,255,255,.72);padding:.35rem 0;transition:color .2s}
+  .foot-col a{display:block;text-decoration:none;color:var(--white);padding:.35rem 0;transition:color .2s}
   .foot-col a:hover{color:var(--white)}
   .fine{font-size:.8rem;opacity:.55;margin-top:3rem;border-top:1px solid var(--line-dark-soft);padding-top:1.6rem;
     display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
@@ -261,7 +261,7 @@
     box-shadow:0 32px 60px -20px rgba(11,30,48,.6),0 10px 20px -10px rgba(11,30,48,.42)}
   .tile h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;
     font-size:1.35rem;margin-top:.55rem;line-height:1.08}
-  .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:.86;max-width:46ch}
+  .tile p{margin-top:.75rem;font-size:1rem;line-height:1.55;opacity:1;max-width:46ch}
   .tile.big{grid-column:span 2;aspect-ratio:3/2;padding:2.3rem}
   .tile.big h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
   .tile.big p{font-size:1.06rem}
