@@ -165,7 +165,7 @@
 
   /* ---------- editorial ghost wordmark ---------- */
   .editorial{position:relative;overflow:hidden;background:var(--paper)}
-  .ghost{position:absolute;right:clamp(-3rem,-4vw,-1rem);top:50%;transform:translateY(-50%);
+  .ghost{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
     width:clamp(20rem,46vw,40rem);height:auto;aspect-ratio:1;
     color:var(--text-strong);opacity:.08;
     pointer-events:none;user-select:none;z-index:0}
@@ -308,7 +308,7 @@
   }
 
   /* ---------- ghost wordmark drift ---------- */
-  @keyframes ghostDrift{from{transform:translateY(-50%) translateX(7%)}to{transform:translateY(-50%) translateX(-7%)}}
+  @keyframes ghostDrift{from{transform:translate(-50%,-50%) translateX(5%)}to{transform:translate(-50%,-50%) translateX(-5%)}}
   /* scroll-linked parallax (sovereignai scrollLinked) */
   @supports (animation-timeline:view()){
     @media (prefers-reduced-motion:no-preference){
@@ -370,7 +370,7 @@
 
   <!-- EDITORIAL / WHAT IT IS -->
   <section id="what" class="editorial">
-    <svg class="ghost" aria-hidden="true" viewBox="0 0 240 240"><g fill="none" stroke="currentColor"><circle cx="120" cy="120" r="116" stroke-width="2"/><circle cx="120" cy="120" r="90" stroke-width="1"/><path d="M120 2 v20 M120 218 v20 M2 120 h20 M218 120 h20" stroke-width="2"/><path d="M120 14 L140 100 L226 120 L140 140 L120 226 L100 140 L14 120 L100 100 Z" stroke-width="1.5"/></g><path d="M120 14 L140 100 L100 100 Z" fill="currentColor"/><circle cx="120" cy="120" r="6" fill="currentColor"/></svg>
+    <svg class="ghost" aria-hidden="true" viewBox="0 0 240 240"><g fill="none" stroke="currentColor"><circle cx="120" cy="120" r="116" stroke-width="2"/><circle cx="120" cy="120" r="92" stroke-width="1"/><path d="M120 34 L130 120 L120 210 L110 120 Z" stroke-width="1.5"/></g><path d="M120 34 L130 120 L110 120 Z" fill="currentColor"/><circle cx="120" cy="120" r="6.5" fill="currentColor"/><g fill="currentColor" stroke="none" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="18" text-anchor="middle"><text x="120" y="22">N</text><text x="120" y="236">S</text><text x="228" y="126">E</text><text x="13" y="126">W</text></g></svg>
     <div class="wrap">
       <div class="lead r">
         <h2>The work is already happening up here.</h2>
